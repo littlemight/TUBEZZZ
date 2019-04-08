@@ -21,6 +21,7 @@ procedure load();
 
 begin
     load();
+    // test kafir
     // readln(inp);
     // case inp of 
     //     'cari':
