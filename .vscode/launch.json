@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      { // shortcut: F5 (start debugging)
+        "type": "gdb",
+        "request": "launch",
+        "name": "gdb Debugger",
+        "cwd": "${workspaceFolder}",
+        "executable": "out/debug/${fileBasenameNoExtension}",
+        "args": [],
+        "preLaunchTask": "fpc: Build Debug",
+        "postDebugTask": "fpc: Clean Files"
+      },
+      // { // native debugger
+      //   "type": "gdb-mi",
+      //   "request": "launch",
+      //   "name": "Native Debugger",
+      //   "cwd": "${workspaceFolder}",
+      //   "target": "${workspaceFolder}/${fileBasenameNoExtension}",
+      //   // "terminal": "",
+      //   "preLaunchTask": "fpc: Build Debug",
+      //   "postDebugTask": "fpc: Clean Files"
+      // },
+    ]
+  }
