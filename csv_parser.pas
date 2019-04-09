@@ -16,7 +16,7 @@ procedure simpan_csv(filename: string; stList: arr_str);
         i : integer;
     begin
         Assign(Userfile, filename);
-        Rewrite(Userfile);
+        Rewrite(Userfile); // write mode
         for i := 0 to stList.sz-1 do
         begin
             writeln(Userfile, stList.st[i]);
@@ -31,7 +31,7 @@ function baca_csv(filename: string): arr_str;
         ret: arr_str;
     begin
         assign(userfile, filename);
-        reset(userfile);
+        reset(userfile); // read only mode
 
         ret.sz := 0;
         repeat
