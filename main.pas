@@ -11,6 +11,7 @@ var
     data_buku : tabel_buku;
     inp : string;
 
+// f13 load, mungkin bakal dibikin unit sendiri, liat nanti
 procedure load();
     var
         temp : arr_str;
@@ -21,6 +22,7 @@ procedure load();
             data_buku := buku_handler.tambah(temp);
     end;
 
+// f14 save, same with 13
 procedure save();  
     var
         temp : arr_str;
