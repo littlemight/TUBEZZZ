@@ -2,17 +2,17 @@ unit f04_findYear;
 
 interface
 uses
-    csvdocument,
-    sysutils,
-    f03_findCategory;
+    utilitas,
+    buku_handler,
+    f03_findCategory; // menggunakan prosedur urut
 
 var
     tahun : integer;
     inp : string;
 
-procedure filter_tahun(var data_bersih : TCSVDocument; data_kotor : TCSVDocument; tahun : integer; inp : string; rc : integer);
+procedure filter_tahun(var data_bersih : tabel_buku; data_kotor : tabel_buku; tahun : integer; inp : string);
 function cek_tahun(val: integer; tahun: integer;inp: string) : boolean;
-procedure cari_tahun(data_input : TCSVDocument);
+procedure cari_tahun(data_input : tabel_buku);
 
 implementation
 function cek_tahun(val: integer; tahun: integer; inp: string) : boolean;
@@ -25,37 +25,28 @@ function cek_tahun(val: integer; tahun: integer; inp: string) : boolean;
             else cek_tahun := val = tahun;
         end;
     end;
-procedure filter_tahun(var data_bersih : TCSVDocument; data_kotor : TCSVDocument; tahun : integer; inp : string; rc : integer);
-    var 
-        i, j, k: integer;
-    begin
-        data_bersih := TCSVDocument.create();
-        data_bersih.AddRow(data_kotor.cells[0,0]);
-        
-        for j := 1 to 5 do
-        begin
-            data_bersih.InsertCell(j, 0, data_kotor.cells[j,0]);
-        end;
 
-        k := 1;
-        for i := 1 to rc-1 do
+procedure filter_tahun(var data_bersih : tabel_buku; data_kotor : tabel_buku; tahun : integer; inp : string);
+    var 
+        i : integer;
+    begin
+        data_bersih.t[0] := data_kotor.t[0];
+        data_bersih.sz := data_bersih.sz+1;
+        
+        for i := 1 to data_kotor.sz-1 do
         begin
-            if(cek_tahun(StrToInt(data_kotor.cells[4,i]), tahun, inp)) then
+            if(cek_tahun(StringToInt(data_kotor.t[i].Tahun_Penerbit), tahun, inp)) then
             begin
-                data_bersih.InsertRow(k, data_kotor.cells[0,i]);
-                for j := 1 to 5 do
-                begin
-                    data_bersih.InsertCell(j, k, data_kotor.cells[j,i]);
-                end;
-                k := k+1;
+                data_bersih.t[data_bersih.sz] := data_kotor.t[i];
+                data_bersih.sz := data_bersih.sz+1;
             end;
         end;
+
     end;
 
-procedure cari_tahun(data_input : TCSVDocument);
+procedure cari_tahun(data_input : tabel_buku);
     var
-        rc : integer;
-        data_bersih : TCSVDocument;
+        data_bersih : tabel_buku;
     begin
         write('Masukkan tahun: ');
         readln(tahun);
@@ -65,14 +56,13 @@ procedure cari_tahun(data_input : TCSVDocument);
         writeln();
 
         writeln('Buku yang terbit ', inp, ' ', tahun, ':');
-        rc := data_input.RowCount;
-        filter_tahun(data_bersih, data_input, tahun, inp, rc);
-        rc := data_bersih.RowCount;
-        if(rc <> 0) then
+        filter_tahun(data_bersih, data_input, tahun, inp);
+        if(data_bersih.sz=1) then writeln('Tidak ada buku dalam kategori ini.')
+        else 
         begin
             urutkan(data_bersih);
             cetak(data_bersih);
-        end else writeln('Tidak ada buku dalam kategori ini.')
+        end;
        
     end;
 end.

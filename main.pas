@@ -3,6 +3,8 @@ Program main;
 uses
     csv_parser,
     buku_handler,
+    f03_findCategory,
+    f04_findYear,
     tipe_string;
 
 var
@@ -24,23 +26,24 @@ procedure save();
         temp : arr_str;
         filename : string;
     begin
-        write('Masukkan nama file yang ingin disimpan: '); readln(filename);
+        write('Masukkan nama File Buku: '); readln(filename);
             temp := buku_handler.konversi_csv(data_buku);
             simpan_csv(filename, temp);
+        
+        writeln('Data berhasil disimpan!');
     end;
 begin
     load();
-    save();
-    // readln(inp);
-    // case inp of 
-    //     'cari':
-    //         begin
-    //             cari_kategori(data_buku);  
-    //         end;
-    //     // 'caritahunterbit':
-    //     //     begin
-    //     //         cari_tahun(data_buku);
-    //     //     end;
-    // end;
-    // goblok
+    // save();
+    readln(inp);
+    case inp of 
+        'cari':
+            begin
+                cari_kategori(data_buku);  
+            end;
+        'caritahunterbit':
+            begin
+                cari_tahun(data_buku);
+            end;
+    end;
 end.

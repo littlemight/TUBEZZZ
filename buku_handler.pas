@@ -57,16 +57,6 @@ function tambah(s: arr_str): tabel_buku;
       tambah := data_tempbuku;
     end;
 
-procedure print(data_tempbuku: tabel_buku); // for debugging
-    var
-     i: integer;
-    begin
-        for i:=0 to data_tempbuku.sz-1 do
-        begin
-            writeln(data_tempbuku.t[i].ID_Buku, ' | ', data_tempbuku.t[i].Judul_Buku, ' | ', data_tempbuku.t[i].Author, ' | ', data_tempbuku.t[i].Jumlah_Buku, ' | ', data_tempbuku.t[i].Tahun_Penerbit, ' | ', data_tempbuku.t[i].Kategori);
-        end;
-    end;
-
 function konversi_csv(data_tempbuku: tabel_buku): arr_str;
     var
         i : integer;
@@ -83,6 +73,18 @@ function konversi_csv(data_tempbuku: tabel_buku): arr_str;
                       data_tempbuku.t[i].Kategori;
         end;
         konversi_csv := ret;
-    end;  
+    end;
+
+procedure print(data_tempbuku: tabel_buku); // for debugging
+    var
+     i: integer;
+    begin
+        for i:=0 to data_tempbuku.sz-1 do
+        begin
+            writeln(data_tempbuku.t[i].ID_Buku, ' | ', data_tempbuku.t[i].Judul_Buku, ' | ', data_tempbuku.t[i].Author, ' | ', data_tempbuku.t[i].Jumlah_Buku, ' | ', data_tempbuku.t[i].Tahun_Penerbit, ' | ', data_tempbuku.t[i].Kategori);
+        end;
+    end;
+
+  
 end.
 // sample
