@@ -19,9 +19,18 @@ procedure load();
             data_buku := buku_handler.tambah(temp);
     end;
 
+procedure save();  
+    var
+        temp : arr_str;
+        filename : string;
+    begin
+        write('Masukkan nama file yang ingin disimpan: '); readln(filename);
+            temp := buku_handler.konversi_csv(data_buku);
+            simpan_csv(filename, temp);
+    end;
 begin
     load();
-    // test kafir
+    save();
     // readln(inp);
     // case inp of 
     //     'cari':

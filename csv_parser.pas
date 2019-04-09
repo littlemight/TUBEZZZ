@@ -6,20 +6,24 @@ uses
     tipe_string;
 
 function baca_csv(filename: string): arr_str;
-function simpan_csv(tabel_konversi: arr_str, filename: string): Text;
+procedure simpan_csv(filename: string; stList: arr_str);
 
 implementation
 
-// procedure simpan_csv(var data_buku: tabel_buku);
-//     begin
-//         case filename of 
-//             'buku.csv': buku_handler.konversi_csv(data_buku);
-//             // 'user.csv': user_handler.tambah(data_user, row);
-//             // 'peminjaman.csv': peminjaman_handler.tambah(data_peminjaman, row);
-//             // 'pengembalian.csv': pengembalian_handler.tambah(data_pengembalian, row);
-//             // 'kehilangan.csv': kehilangan_handler.tambah(data_kehilangan, row);
-//             end;
-//     end;
+procedure simpan_csv(filename: string; stList: arr_str);
+    var
+        Userfile: text;
+        i : integer;
+    begin
+        Assign(Userfile, filename);
+        Rewrite(Userfile);
+        for i := 0 to stList.sz-1 do
+        begin
+            writeln(Userfile, stList.st[i]);
+        end;
+        Close(userfile);
+    end;
+
 function baca_csv(filename: string): arr_str;
     var
         input : string;
@@ -38,6 +42,5 @@ function baca_csv(filename: string): arr_str;
         close(userfile);
         baca_csv := ret;
     end;
-
 
 end.
