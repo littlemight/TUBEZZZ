@@ -19,5 +19,4 @@ procedure registrasi(var data_user : tabel_user);
         
         writeln('Pengunjung ', data_user.t[data_user.sz-1].nama, ' berhasil terdaftar sebagai user.');
     end;
-
 end.
