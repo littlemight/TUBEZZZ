@@ -47,7 +47,7 @@ function tambah(s: arr_str): tabel_user;
                     data_tempuser.t[data_tempuser.sz].Nama := temp;
                     countcomma := countcomma - 1;
                     end else
-                if (countcomma > amountcomma - 3) then
+                if (countcomma > 3) then
                     begin
                     temp := temp+c;
                     countcomma := countcomma - 1;
