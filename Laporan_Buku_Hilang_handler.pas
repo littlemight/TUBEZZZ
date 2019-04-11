@@ -16,7 +16,7 @@ type
 
 
 function tambah(s: arr_str): tabel_Laporan_Buku_Hilang;
-procedure print(data_tempLaporan_Buku_Hilang: tabel_Laporan_Buku_Hilang);
+procedure output(data_tempLaporan_Buku_Hilang: tabel_Laporan_Buku_Hilang);
 function konversi_csv(data_tempLaporan_Buku_Hilang: tabel_Laporan_Buku_Hilang): arr_str;
 
 implementation
@@ -51,7 +51,7 @@ function tambah(s: arr_str): tabel_Laporan_Buku_Hilang;
         data_tempLaporan_Buku_Hilang.t[data_tempLaporan_Buku_Hilang.sz].Tanggal_Laporan := temp;
         data_tempLaporan_Buku_Hilang.sz := data_tempLaporan_Buku_Hilang.sz+1;        
       end;
-      print(data_tempLaporan_Buku_Hilang);
+      output(data_tempLaporan_Buku_Hilang);
       tambah := data_tempLaporan_Buku_Hilang;
     end;
 
@@ -70,7 +70,7 @@ function konversi_csv(data_tempLaporan_Buku_Hilang: tabel_Laporan_Buku_Hilang): 
         konversi_csv := ret;
     end;
 
-procedure print(data_tempLaporan_Buku_Hilang: tabel_Laporan_Buku_Hilang); // for debugging
+procedure output(data_tempLaporan_Buku_Hilang: tabel_Laporan_Buku_Hilang); // for debugging
     var
      i: integer;
     begin

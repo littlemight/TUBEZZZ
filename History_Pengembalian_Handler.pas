@@ -16,7 +16,7 @@ type
 
 
 function tambah(s: arr_str): tabel_History_Pengembalian;
-procedure print(data_tempHistory_Pengembalian: tabel_History_Pengembalian);
+procedure keluarkan(data_tempHistory_Pengembalian: tabel_History_Pengembalian);
 function konversi_csv(data_tempHistory_Pengembalian: tabel_History_Pengembalian): arr_str;
 
 implementation
@@ -51,7 +51,7 @@ function tambah(s: arr_str): tabel_History_Pengembalian;
         data_tempHistory_Pengembalian.t[data_tempHistory_Pengembalian.sz].Tanggal_Pengembalian := temp;
         data_tempHistory_Pengembalian.sz := data_tempHistory_Pengembalian.sz+1;        
       end;
-      print(data_tempHistory_Pengembalian);
+      keluarkan(data_tempHistory_Pengembalian);
       tambah := data_tempHistory_Pengembalian;
     end;
 
@@ -70,7 +70,7 @@ function konversi_csv(data_tempHistory_Pengembalian: tabel_History_Pengembalian)
         konversi_csv := ret;
     end;
 
-procedure print(data_tempHistory_Pengembalian: tabel_History_Pengembalian); // for debugging
+procedure keluarkan(data_tempHistory_Pengembalian: tabel_History_Pengembalian); // for debugging
     var
      i: integer;
     begin

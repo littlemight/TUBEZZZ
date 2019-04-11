@@ -51,6 +51,11 @@ begin
         while(inp <> 'exit') do
         begin
             case inp of 
+			'register' :
+				begin
+					data_user:= minta_data(data_user);
+					print(data_user);
+				end;
             'cari':
                 begin
                     cari_kategori(data_buku);  

@@ -16,7 +16,7 @@ type
 
 
 function tambah(s: arr_str): tabel_History_Peminjaman;
-procedure print(data_tempHistory_Peminjaman: tabel_History_Peminjaman);
+procedure tulis(data_tempHistory_Peminjaman: tabel_History_Peminjaman);
 function konversi_csv(data_tempHistory_Peminjaman: tabel_History_Peminjaman): arr_str;
 
 implementation
@@ -54,7 +54,7 @@ function tambah(s: arr_str): tabel_History_Peminjaman;
         data_tempHistory_Peminjaman.t[data_tempHistory_Peminjaman.sz].Status_Pengembalian := temp;
         data_tempHistory_Peminjaman.sz := data_tempHistory_Peminjaman.sz+1;        
       end;
-      print(data_tempHistory_Peminjaman);
+      tulis(data_tempHistory_Peminjaman);
       tambah := data_tempHistory_Peminjaman;
     end;
 
@@ -76,7 +76,7 @@ function konversi_csv(data_tempHistory_Peminjaman: tabel_History_Peminjaman): ar
         konversi_csv := ret;
     end;
 
-procedure print(data_tempHistory_Peminjaman: tabel_History_Peminjaman); // for debugging
+procedure tulis(data_tempHistory_Peminjaman: tabel_History_Peminjaman); // for debugging
     var
      i: integer;
     begin
