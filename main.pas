@@ -4,13 +4,20 @@ uses
     csv_parser,
     buku_handler,
     user_handler,
+    History_Peminjaman_Handler,
+    History_Pengembalian_Handler,
+    Laporan_Buku_Hilang_handler,
     f03_findCategory,
     f04_findYear,
+    f01_registrasiAkun,
     tipe_string;
 
 var
     data_buku : tabel_buku;
     data_user : tabel_user;
+    data_peminjaman : tabel_History_Peminjaman;
+    data_pengembalian : tabel_History_Pengembalian;
+    data_kehilangan : tabel_Laporan_Buku_Hilang;
     inp : string;
 
 procedure load();
@@ -24,6 +31,16 @@ procedure load();
         write('Masukkan nama File User: '); readln(filename);
             temp := baca_csv(filename);
             data_user := user_handler.tambah(temp);
+        write('Masukkan nama File Peminjaman: '); readln(filename);
+            temp := baca_csv(filename);
+            data_peminjaman := History_Peminjaman_Handler.tambah(temp);
+        write('Masukkan nama File Pengembalian: '); readln(filename);
+            temp := baca_csv(filename);
+            data_pengembalian := History_Pengembalian_handler.tambah(temp);
+        write('Masukkan nama File Buku Hilang: '); readln(filename);
+            temp := baca_csv(filename);
+            data_kehilangan := Laporan_Buku_Hilang_handler.tambah(temp);
+        WriteLn('File perpustakaan berhasil dimuat!')
     end;
 
 begin
@@ -34,6 +51,11 @@ begin
         while(inp <> 'exit') do
         begin
             case inp of 
+			'register' :
+				begin
+					data_user:= minta_data(data_user);
+					print(data_user);
+				end;
             'cari':
                 begin
                     cari_kategori(data_buku);  

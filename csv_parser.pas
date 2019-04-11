@@ -21,7 +21,7 @@ procedure simpan_csv(filename: string; stList: arr_str);
         begin
             writeln(Userfile, stList.st[i]);
         end;
-        Close(userfile);
+        close(userfile);
     end;
 
 function baca_csv(filename: string): arr_str;

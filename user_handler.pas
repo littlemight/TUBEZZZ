@@ -22,31 +22,56 @@ function konversi_csv(data_tempuser: tabel_user): arr_str;
 implementation
 function tambah(s: arr_str): tabel_user;
     var
-      col, row: integer;
+      row: integer;
       temp: string;
       c: char;
       data_tempuser : tabel_user;
+      countcomma, amountcomma : integer;
+
     begin
       data_tempuser.sz := 0;      
       for row:=0 to s.sz-1 do
       begin
-        col := 0;
         temp := '';
-        
+        countcomma := 0;
         for c in s.st[row] do
         begin
-            if(c=',') then
+            if (c=',') then countcomma := countcomma + 1;
+        end;
+        amountcomma := countcomma;
+        for c in s.st[row] do
+        begin
+            if (c=',') then
             begin
-                // 0 based indexing
-                case col of
-                    0: data_tempuser.t[data_tempuser.sz].Nama := temp;
-                    1: data_tempuser.t[data_tempuser.sz].Alamat := temp;
-                    2: data_tempuser.t[data_tempuser.sz].Username := temp;
-                    3: data_tempuser.t[data_tempuser.sz].Password := temp;
-                end;
-
-                col := col+1;
-                temp := '';
+                if (amountcomma = countcomma) then
+                    begin
+                    data_tempuser.t[data_tempuser.sz].Nama := temp;
+                    countcomma := countcomma - 1;
+                    temp := '';
+                    end else
+                if (countcomma > 3) then
+                    begin
+                    temp := temp+c;
+                    countcomma := countcomma - 1;
+                    end else
+                if (countcomma = 3) then
+                    begin
+                    data_tempuser.t[data_tempuser.sz].Alamat := temp;
+                    countcomma := countcomma - 1;
+                    temp := '';
+                    end else
+                if (countcomma = 2) then
+                    begin
+                    data_tempuser.t[data_tempuser.sz].Username := temp;
+                    countcomma := countcomma - 1;
+                    temp := '';
+                    end else
+                if (countcomma = 1) then
+                    begin
+                    data_tempuser.t[data_tempuser.sz].Password := temp;
+                    countcomma := countcomma - 1;
+                    temp := '';
+                    end else
             end else temp := temp+c;
         end;  
         data_tempuser.t[data_tempuser.sz].Role := temp;

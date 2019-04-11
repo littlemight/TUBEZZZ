@@ -16,7 +16,7 @@ type
 
 
 function tambah(s: arr_str): tabel_buku;
-procedure print(data_tempbuku: tabel_buku);
+procedure cetak(data_tempbuku: tabel_buku);
 function konversi_csv(data_tempbuku: tabel_buku): arr_str;
 
 implementation
@@ -53,7 +53,7 @@ function tambah(s: arr_str): tabel_buku;
         data_tempbuku.t[data_tempbuku.sz].Kategori := temp;
         data_tempbuku.sz := data_tempbuku.sz+1;        
       end;
-      print(data_tempbuku);
+      cetak(data_tempbuku);
       tambah := data_tempbuku;
     end;
 
@@ -75,7 +75,7 @@ function konversi_csv(data_tempbuku: tabel_buku): arr_str;
         konversi_csv := ret;
     end;
 
-procedure print(data_tempbuku: tabel_buku); // for debugging
+procedure cetak(data_tempbuku: tabel_buku); // for debugging
     var
      i: integer;
     begin
