@@ -21,9 +21,11 @@ function konversi_csv(data_tempHistory_Peminjaman: tabel_History_Peminjaman): ar
 
 implementation
 function tambah(s: arr_str): tabel_History_Peminjaman;
+{ fungsi tambah adalah suatu fungsi yang menerima inputan berupa s -- array of string yang berisikan kumpulan string yang merupakan hasil convert dari text pada csv--
+ dan mengubahnya menjadi array yang berupa data terpisah -- username, id_buku,author,tanggal peminjaman, tanggal batas pengembalian dan status pengembalian-- masing masing user.}
     var
-      col, row: integer;
-      temp: string;
+      col, row: integer; // col = data ke-N, row = baris ke-N dari file csv
+      temp: string; // string temporer, berfungsi 
       c: char;
       data_tempHistory_Peminjaman : tabel_History_Peminjaman;
     begin
