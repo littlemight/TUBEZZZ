@@ -1,12 +1,6 @@
-unit test1;
-
-interface
-
-procedure increment();
-
-implementation
-procedure increment();
-  begin
-    le := le+1;
-  end;
+var
+  str: string;
+begin
+  str:='bangsat';
+  writeln(str[0]);
 end.
