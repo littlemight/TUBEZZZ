@@ -26,7 +26,7 @@ function tambah(s: arr_str): tabel_user;
       temp: string;
       c: char;
       data_tempuser : tabel_user;
-      countcomma : integer;
+      countcomma, amountcomma : integer;
 
     begin
       data_tempuser.sz := 0;      
