@@ -7,7 +7,7 @@ const
     nmax = 1000;
 type
     History_Pengembalian = record
-            Username, ID_Buku, Tanggal_Peminjaman: string;
+            Username, ID_Buku, Tanggal_Pengembalian: string;
         end;
     tabel_History_Pengembalian = record
                t: array [0..nmax] of History_Pengembalian;
@@ -65,7 +65,7 @@ function konversi_csv(data_tempHistory_Pengembalian: tabel_History_Pengembalian)
         begin
             ret.st[i] := data_tempHistory_Pengembalian.t[i].Username + ',' +
                       data_tempHistory_Pengembalian.t[i].ID_Buku + ',' +
-                      data_tempHistory_Pengembalian.t[i].Tanggal_Peminjaman;
+                      data_tempHistory_Pengembalian.t[i].Tanggal_Pengembalian;
         end;
         konversi_csv := ret;
     end;
@@ -76,7 +76,7 @@ procedure print(data_tempHistory_Pengembalian: tabel_History_Pengembalian); // f
     begin
         for i:=0 to data_tempHistory_Pengembalian.sz-1 do
         begin
-            writeln(data_tempHistory_Pengembalian.t[data_tempHistory_Pengembalian.sz].Username, ' | ', data_tempHistory_Pengembalian.t[i].ID_Buku, ' | ', data_tempHistory_Pengembalian.t[i].Tanggal_Pengembalian);
+            writeln(data_tempHistory_Pengembalian.t[i].Username, ' | ', data_tempHistory_Pengembalian.t[i].ID_Buku, ' | ', data_tempHistory_Pengembalian.t[i].Tanggal_Pengembalian);
         end;
     end;
 

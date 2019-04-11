@@ -43,9 +43,8 @@ function tambah(s: arr_str): tabel_History_Peminjaman;
                 case col of
                     0: data_tempHistory_Peminjaman.t[data_tempHistory_Peminjaman.sz].Username := temp;
                     1: data_tempHistory_Peminjaman.t[data_tempHistory_Peminjaman.sz].ID_Buku := temp;
-                    2: data_tempHistory_Peminjaman.t[data_tempHistory_Peminjaman.sz].Author := temp;
-                    3: data_tempHistory_Peminjaman.t[data_tempHistory_Peminjaman.sz].Tanggal_Peminjaman := temp;
-                    4: data_tempHistory_Peminjaman.t[data_tempHistory_Peminjaman.sz].Tanggal_Batas_Pengembalian := temp;
+                    2: data_tempHistory_Peminjaman.t[data_tempHistory_Peminjaman.sz].Tanggal_Peminjaman := temp;
+                    3: data_tempHistory_Peminjaman.t[data_tempHistory_Peminjaman.sz].Tanggal_Batas_Pengembalian := temp;
                 end;
 
                 col := col+1;
@@ -83,10 +82,8 @@ procedure print(data_tempHistory_Peminjaman: tabel_History_Peminjaman); // for d
     begin
         for i:=0 to data_tempHistory_Peminjaman.sz-1 do
         begin
-            writeln(data_tempHistory_Peminjaman.t[data_tempHistory_Peminjaman.sz].Username, ' | ', data_tempHistory_Peminjaman.t[i].ID_Buku, ' | ', data_tempHistory_Peminjaman.t[i].Author, ' | ', data_tempHistory_Peminjaman.t[i].Tanggal_Peminjaman, ' | ', data_tempHistory_Peminjaman.t[i].Tanggal_Batas_Pengembalian, ' | ', data_tempHistory_Peminjaman.t[i].Status_Pengembalian);
+            writeln(data_tempHistory_Peminjaman.t[i].Username, ' | ', data_tempHistory_Peminjaman.t[i].ID_Buku, ' | ',  data_tempHistory_Peminjaman.t[i].Tanggal_Peminjaman, ' | ', data_tempHistory_Peminjaman.t[i].Tanggal_Batas_Pengembalian, ' | ', data_tempHistory_Peminjaman.t[i].Status_Pengembalian);
         end;
     end;
-
-  
 end.
 // sample

@@ -48,7 +48,7 @@ function tambah(s: arr_str): tabel_Laporan_Buku_Hilang;
                 temp := '';
             end else temp := temp+c;
         end;  
-        data_tempLaporan_Buku_Hilang.t[data_tempLaporan_Buku_Hilang.sz].Tanggal_Pengembalian := temp;
+        data_tempLaporan_Buku_Hilang.t[data_tempLaporan_Buku_Hilang.sz].Tanggal_Laporan := temp;
         data_tempLaporan_Buku_Hilang.sz := data_tempLaporan_Buku_Hilang.sz+1;        
       end;
       print(data_tempLaporan_Buku_Hilang);
@@ -76,7 +76,7 @@ procedure print(data_tempLaporan_Buku_Hilang: tabel_Laporan_Buku_Hilang); // for
     begin
         for i:=0 to data_tempLaporan_Buku_Hilang.sz-1 do
         begin
-            writeln(data_tempLaporan_Buku_Hilang.t[data_tempLaporan_Buku_Hilang.sz].Username, ' | ', data_tempLaporan_Buku_Hilang.t[i].ID_Buku_Hilang, ' | ', data_tempLaporan_Buku_Hilang.t[i].Tanggal_Pengembalian);
+            writeln(data_tempLaporan_Buku_Hilang.t[i].Username, ' | ', data_tempLaporan_Buku_Hilang.t[i].ID_Buku_Hilang, ' | ', data_tempLaporan_Buku_Hilang.t[i].Tanggal_Laporan);
         end;
     end;
 
