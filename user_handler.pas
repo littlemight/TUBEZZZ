@@ -33,6 +33,7 @@ function tambah(s: arr_str): tabel_user;
       for row:=0 to s.sz-1 do
       begin
         temp := '';
+        countcomma := 0;
         for c in s.st[row] do
         begin
             if (c=',') then countcomma := countcomma + 1;
@@ -46,6 +47,7 @@ function tambah(s: arr_str): tabel_user;
                     begin
                     data_tempuser.t[data_tempuser.sz].Nama := temp;
                     countcomma := countcomma - 1;
+                    temp := '';
                     end else
                 if (countcomma > 3) then
                     begin
