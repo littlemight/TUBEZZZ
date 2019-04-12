@@ -8,6 +8,7 @@ uses
     pengembalian_Handler,
     kehilangan_handler,
     f01_registrasi,
+    f02_Login,
     f03_findCategory,
     f04_findYear,
     f12_statistik,
@@ -19,6 +20,7 @@ var
     data_peminjaman : tabel_peminjaman;
     data_pengembalian : tabel_pengembalian;
     data_kehilangan : tabel_kehilangan;
+    who_login : user;
     inp : string;
 
 procedure load();
@@ -77,10 +79,12 @@ begin
             case inp of 
 			'register' :
 				begin
-					// data_user:= minta_data(data_user);
                     registrasi(data_user);
-                    user_handler.print(data_user);
 				end;
+            'login' :
+                begin
+                    who_login := login(data_user);
+                end;
             'cari':
                 begin
                     cari_kategori(data_buku);  
