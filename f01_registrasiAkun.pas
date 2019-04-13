@@ -3,7 +3,7 @@ unit f01_registrasiAkun;
 interface
 
 uses 
-    user_handler,tipe_string;
+    user_handler,tipe_data;
     
 var
     inp : string;

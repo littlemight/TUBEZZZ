@@ -1,4 +1,7 @@
-Username,ID_Buku,Tanggal_Peminjaman,Tanggal_Batas_Pengembalian,Status_Pengembalian
-littlemight,16518121,11/04/2019,18/04/2019,True
-Ayyub29,16518191,20/05/2019,09/06/2019,False
-littlemight,16518171,11/04/2019,18/04/2019,True
+Username,ID_Buku,Author,Tanggal_Peminjaman,Tanggal_Batas_Peminjaman,Status_Pengembalian
+littlemight,16518121,Steven Halim,Steven Halim,Steven Halim,True
+Ayyub29,16518191,Sterling Children's,Sterling Children's,Sterling Children's,False
+littlemight,16518171,Jonathan Knudsen,Jonathan Knudsen,Jonathan Knudsen,True
+littlemight,2516,Purcell,Robert C. Martin,123,False
+littlemight,2516,Robert C. Martin,123,belum tau,False
+littlemight,2516,Robert C. Martin,123,belum tau,False

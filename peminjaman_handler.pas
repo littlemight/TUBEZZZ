@@ -2,7 +2,7 @@ unit peminjaman_handler;
 
 interface
 uses
-    tipe_string;
+    tipe_data;
 const
     nmax = 1000;
 type
@@ -43,8 +43,9 @@ function tambah(s: arr_str): tabel_peminjaman;
                 case col of
                     0: data_temppeminjaman.t[data_temppeminjaman.sz].Username := temp;
                     1: data_temppeminjaman.t[data_temppeminjaman.sz].ID_Buku := temp;
-                    2: data_temppeminjaman.t[data_temppeminjaman.sz].Tanggal_Peminjaman := temp;
-                    3: data_temppeminjaman.t[data_temppeminjaman.sz].Tanggal_Batas_Pengembalian := temp;
+                    2: data_temppeminjaman.t[data_temppeminjaman.sz].Author := temp;
+                    3: data_temppeminjaman.t[data_temppeminjaman.sz].Tanggal_Peminjaman := temp;
+                    4: data_temppeminjaman.t[data_temppeminjaman.sz].Tanggal_Batas_Pengembalian := temp;
                 end;
 
                 col := col+1;

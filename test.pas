@@ -1,11 +1,14 @@
 Program test;
 
-uses utilitas;
+uses
+  utilitas,
+  tipe_data;
 
 var
-  str : string;
+  tgl1, tgl2: string;
 
 begin
-  str := '696969';
-  writeln(StringToInt(str)+1);
+  tgl1 := '28/02/2004';
+  tgl2 := '24/03/2004';
+  writeln(BedaHari(tgl1, tgl2));
 end.

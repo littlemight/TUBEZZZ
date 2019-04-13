@@ -4,7 +4,7 @@ interface
 
 uses 
     user_handler;
-    tipe_string;
+    tipe_data;
 var
     inp : string;
 

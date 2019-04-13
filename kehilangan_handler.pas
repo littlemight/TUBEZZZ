@@ -2,7 +2,7 @@ unit kehilangan_handler;
 
 interface
 uses
-    tipe_string;
+    tipe_data;
 const
     nmax = 1000;
 type

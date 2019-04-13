@@ -12,7 +12,7 @@ uses
     f03_findCategory,
     f04_findYear,
     f12_statistik,
-    tipe_string;
+    tipe_data;
 
 var
     data_buku : tabel_buku;

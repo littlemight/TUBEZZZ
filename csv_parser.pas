@@ -3,7 +3,7 @@ unit csv_parser;
 interface
 uses
     buku_handler,
-    tipe_string;
+    tipe_data;
 
 function baca_csv(filename: string): arr_str;
 procedure simpan_csv(filename: string; stList: arr_str);
