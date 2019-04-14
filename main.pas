@@ -12,6 +12,8 @@ uses
     f03_findCategory,
     f04_findYear,
     f12_statistik,
+    b02_denda,
+    utilitas,
     tipe_data;
 
 var
@@ -21,6 +23,7 @@ var
     data_pengembalian : tabel_pengembalian;
     data_kehilangan : tabel_kehilangan;
     who_login : user;
+    have_login : Boolean;
     inp : string;
 
 procedure load();
@@ -69,8 +72,21 @@ procedure save();
         // WriteLn('File perpustakaan berhasil dimuat!')
     end;
 
+procedure load_menu();
+	begin
+		writeln('Menu :');
+		writeln('1. login : Login ke sistem ini ');
+		writeln('2. cari : Mencari berdasarkan kategori buku');
+		writeln('3. caritahunterbit : Mencari berdasarkan tahun terbit');
+		writeln('4. pinjam_buku : Meminjam buku');
+		writeln('5. kembalikan_buku : Mengembalikan Buku');
+		writeln('6. lapor_hilang : Melapor mengenai buku yang hilang');
+		writeln('Masukkan pilihan anda : ');
+	end;
+	
 begin
     load();
+    load_menu();
     readln(inp);
     if(inp='exit') then writeln('keluar ya gan') else
     begin
@@ -84,7 +100,7 @@ begin
             'login' :
                 begin
                     who_login := login(data_user);
-                    writeln(who_login.Role);
+                    have_login := isLogin(who_login);
                 end;
             'cari':
                 begin
@@ -97,6 +113,16 @@ begin
             'statistik':
                 begin
                   getStatistik(data_user, data_buku);
+                end;
+            'kembalikan_buku':
+                begin
+				  cetak(data_buku);
+                  tulis(data_peminjaman);
+                  keluarkan(data_pengembalian);
+                  kembalikan_buku(who_login,data_peminjaman,data_buku,data_pengembalian);
+                  cetak(data_buku);
+                  tulis(data_peminjaman);
+                  keluarkan(data_pengembalian);
                 end;
             end; 
             readln(inp); 

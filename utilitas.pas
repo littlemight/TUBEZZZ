@@ -4,6 +4,9 @@ interface
 uses
   tipe_data;
 
+const
+  waktu_denda = 7;
+
 // General integer utility
 function StringToInt(str: String): integer;
 function StringToInt64(str: String): int64;
@@ -13,7 +16,7 @@ function IntToString(angka: Integer): string;
 function TanggalToString(date: tanggal): string;
 function StringToTanggal(str: String): tanggal;
 function CekKabisat(tahun: integer): boolean;
-function TambahMinggu(tgl: string): string;
+function TambahDenda(tgl: string): string;
 function HitungKabisat(tgl: tanggal): integer;
 function BedaHari(awal, akhir: String): integer;
 
@@ -116,22 +119,22 @@ function CekKabisat(tahun: integer): boolean;
     CekKabisat := ((tahun mod 4=0) and (tahun mod 100<>0)) or (tahun mod 400=0);
   end;
 
-function TambahMinggu(tgl: string): string;
+function TambahDenda(tgl: string): string;
   var
     hariUtkBulan: array [1..12] of integer = (31,28,31,30,31,30,31,31,30,31,30,31);
     cur, ret: tanggal;
   begin
     cur := StringToTanggal(tgl);
     if(CekKabisat(cur.tahun)) then hariUtkBulan[2] := hariUtkBulan[2]+1;
-    ret.hari := (cur.hari + 7) mod hariUtkBulan[cur.bulan];
+    ret.hari := (cur.hari + waktu_denda) mod hariUtkBulan[cur.bulan];
     if(ret.hari = 0) then ret.hari := hariUtkBulan[cur.bulan];
-    ret.bulan := (cur.bulan + (cur.hari + 7) div hariUtkBulan[cur.bulan]) mod 12;
+    ret.bulan := (cur.bulan + (cur.hari + waktu_denda) div hariUtkBulan[cur.bulan]) mod 12;
     if(ret.bulan = 0) then ret.bulan := 12;
-    ret.tahun := cur.tahun + (cur.bulan + (cur.hari + 7) div hariUtkBulan[cur.bulan]) div 12;
+    ret.tahun := cur.tahun + (cur.bulan + (cur.hari + waktu_denda) div hariUtkBulan[cur.bulan]) div 12;
 
     writeln(TanggalToString(ret));
 
-    TambahMinggu := TanggalToString(ret);
+    TambahDenda := TanggalToString(ret);
   end;
 
 function HitungKabisat(tgl: tanggal): integer;
