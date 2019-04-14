@@ -8,7 +8,7 @@ var
   tgl1, tgl2: string;
 
 begin
-  tgl1 := '28/02/2004';
-  tgl2 := '24/03/2004';
+  readln(tgl1);
+  readln(tgl2);
   writeln(BedaHari(tgl1, tgl2));
 end.

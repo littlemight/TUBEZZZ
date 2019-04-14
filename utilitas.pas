@@ -4,14 +4,22 @@ interface
 uses
   tipe_data;
 
+// General integer utility
 function StringToInt(str: String): integer;
 function StringToInt64(str: String): int64;
 function IntToString(angka: Integer): string;
+
+// General date utility
 function TanggalToString(date: tanggal): string;
 function StringToTanggal(str: String): tanggal;
-function cekKabisat(tahun: integer): boolean;
+function CekKabisat(tahun: integer): boolean;
 function TambahMinggu(tgl: string): string;
-function BedaHari(tgl1, tgl2: String): integer;
+function HitungKabisat(tgl: tanggal): integer;
+function BedaHari(awal, akhir: String): integer;
+
+// General boolean utility
+function StringToBool(str: String): boolean;
+function BoolToString(bol: Boolean): string;
 
 implementation
 function StringToInt(str: String): integer;
@@ -103,9 +111,9 @@ function TanggalToString(date: tanggal): string;
     TanggalToString := ret;
   end;
 
-function cekKabisat(tahun: integer): boolean;
+function CekKabisat(tahun: integer): boolean;
   begin
-    cekKabisat := ((tahun mod 4=0) and (tahun mod 100<>0)) or (tahun mod 400=0);
+    CekKabisat := ((tahun mod 4=0) and (tahun mod 100<>0)) or (tahun mod 400=0);
   end;
 
 function TambahMinggu(tgl: string): string;
@@ -114,7 +122,7 @@ function TambahMinggu(tgl: string): string;
     cur, ret: tanggal;
   begin
     cur := StringToTanggal(tgl);
-    if(cekKabisat(cur.tahun)) then hariUtkBulan[2] := hariUtkBulan[2]+1;
+    if(CekKabisat(cur.tahun)) then hariUtkBulan[2] := hariUtkBulan[2]+1;
     ret.hari := (cur.hari + 7) mod hariUtkBulan[cur.bulan];
     if(ret.hari = 0) then ret.hari := hariUtkBulan[cur.bulan];
     ret.bulan := (cur.bulan + (cur.hari + 7) div hariUtkBulan[cur.bulan]) mod 12;
@@ -126,8 +134,50 @@ function TambahMinggu(tgl: string): string;
     TambahMinggu := TanggalToString(ret);
   end;
 
-function BedaHari(tgl1, tgl2: String): integer;
-  var:
-    con1, con2: tanggal;
-    
+function HitungKabisat(tgl: tanggal): integer;
+  var
+    thn: integer;
+  begin
+    thn := tgl.tahun;
+    if(tgl.bulan <= 2) then thn := thn-1;
+    HitungKabisat := (thn div 4) - (thn div 100) + (thn div 400);
+  end;
+
+function BedaHari(awal, akhir: String): integer;
+  var
+    hariUtkBulan: array [1..12] of integer = (31,28,31,30,31,30,31,31,30,31,30,31);
+    tmp1, tmp2: tanggal;
+    day1, day2 : Int64;
+    i : integer;
+  begin
+    tmp1 := StringToTanggal(awal);
+    tmp2 := StringToTanggal(akhir);
+
+    day1 := tmp1.tahun*365 + tmp1.hari;
+    for i := 1 to tmp1.bulan-1 do
+    begin
+      day1 := day1 + hariUtkBulan[i];
+    end;
+
+    day1 := day1 + HitungKabisat(tmp1);
+
+    day2 := tmp2.tahun*365 + tmp2.hari;
+    for i := 1 to tmp2.bulan-1 do
+    begin
+      day2 := day2 + hariUtkBulan[i];
+    end;
+
+    day2 := day2 + HitungKabisat(tmp2);
+
+    BedaHari := day2-day1;
+  end;
+
+function StringToBool(str: String): boolean;
+  begin
+    if(str='True') then StringToBool := True else StringToBool := False;
+  end;  
+function BoolToString(bol: Boolean): string;
+  begin
+    if(bol=True) then BoolToString := 'True' else BoolToString := 'False';
+  end;  
 end.
