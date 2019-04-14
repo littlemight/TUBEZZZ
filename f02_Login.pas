@@ -22,7 +22,7 @@ function login(var data_user : tabel_user): user;
                 if (username = data_user.t[i].Username) and (password = data_user.t[i].Password) then
                     begin
                         login := data_user.t[i];
-                        Writeln('Selamat datang ',login.Username,' !');
+                        Writeln('Selamat datang ',login.Username,'!');
                         have_login := True;
                     end;
             end;
