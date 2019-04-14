@@ -84,6 +84,7 @@ begin
             'login' :
                 begin
                     who_login := login(data_user);
+                    writeln(who_login.Role);
                 end;
             'cari':
                 begin
