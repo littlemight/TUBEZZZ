@@ -5,10 +5,13 @@ uses
     csv_parser,
     user_handler;
 
-function login(var data_user : tabel_user): user;
+function login(var data_user : tabel_user) : user;
+function isLogin(var who_login : User) : Boolean;
 
 implementation
-function login(var data_user : tabel_user): user;
+
+
+function login(var data_user : tabel_user) : user;
     var
         username,password : string;
         have_login : Boolean;
@@ -28,8 +31,16 @@ function login(var data_user : tabel_user): user;
             end;
         if (have_login = False) then
             begin
-                login := data_user.t[data_user.sz+1];
                 writeln('Username / password salah! Silakan coba lagi.');
+            end;
+    end;
+
+function isLogin(var who_login : User) : Boolean;
+    begin
+        isLogin := False;
+        if (who_login.Role = 'Admin') or (who_login.Role = 'Pengunjung') then
+            begin
+            isLogin := True;
             end;
     end;
 end.
