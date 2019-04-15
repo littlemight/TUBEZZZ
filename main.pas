@@ -34,19 +34,24 @@ procedure load();
         write('Masukkan nama File Buku: '); readln(filename);
             temp := baca_csv(filename);
             data_buku := buku_handler.tambah(temp);
+            writeln('');
         write('Masukkan nama File User: '); readln(filename);
             temp := baca_csv(filename);
             data_user := user_handler.tambah(temp);
-        // write('Masukkan nama File Peminjaman: '); readln(filename);
-        //     temp := baca_csv(filename);
-        //     data_peminjaman := peminjaman_Handler.tambah(temp);
-        // write('Masukkan nama File Pengembalian: '); readln(filename);
-        //     temp := baca_csv(filename);
-        //     data_pengembalian := pengembalian_handler.tambah(temp);
-        // write('Masukkan nama File Buku Hilang: '); readln(filename);
-        //     temp := baca_csv(filename);
-        //     data_kehilangan := kehilangan_handler.tambah(temp);
-        // WriteLn('File perpustakaan berhasil dimuat!')
+            writeln('');
+        write('Masukkan nama File Peminjaman: '); readln(filename);
+             temp := baca_csv(filename);
+            data_peminjaman := peminjaman_Handler.tambah(temp);
+            writeln('');
+        write('Masukkan nama File Pengembalian: '); readln(filename);
+            temp := baca_csv(filename);
+             data_pengembalian := pengembalian_handler.tambah(temp);
+             writeln('');
+         write('Masukkan nama File Buku Hilang: '); readln(filename);
+          temp := baca_csv(filename);
+            data_kehilangan := kehilangan_handler.tambah(temp);
+            writeln('');
+         WriteLn('File perpustakaan berhasil dimuat!')
     end;
 
 procedure save();
@@ -116,13 +121,13 @@ begin
                 end;
             'kembalikan_buku':
                 begin
-				  cetak(data_buku);
-                  tulis(data_peminjaman);
-                  keluarkan(data_pengembalian);
                   kembalikan_buku(who_login,data_peminjaman,data_buku,data_pengembalian);
                   cetak(data_buku);
+                  writeln();
                   tulis(data_peminjaman);
+                  writeln();
                   keluarkan(data_pengembalian);
+                  writeln();
                 end;
             end; 
             readln(inp); 

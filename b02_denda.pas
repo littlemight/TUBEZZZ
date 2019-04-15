@@ -9,12 +9,9 @@ uses
     utilitas,
     tipe_data,
     buku_handler;
-
 procedure kembalikan_buku(who_login : user; data_peminjaman : tabel_peminjaman; data_buku : tabel_buku; data_pengembalian : tabel_pengembalian);
 
 implementation
-
-
 procedure kembalikan_buku(who_login : user; data_peminjaman : tabel_peminjaman; data_buku : tabel_buku; data_pengembalian : tabel_pengembalian);
     var
     ID_Buku,todayTanggal : String;
