@@ -16,6 +16,7 @@ uses
     f07_laporhilang,
     f08_lihatlaporan,
     f09_tambahbaru,
+    f10_tambahjumlah,
     f12_statistik,
     b02_denda,
     utilitas,
@@ -150,6 +151,10 @@ begin
             'tambah_buku':
                 begin
                   tambah_baru(data_buku);
+                end;
+            'tambah_jumlah_buku':
+                begin
+                  tambah_jumlah(data_buku);
                 end;
             end; 
             readln(inp); 
