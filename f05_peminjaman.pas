@@ -16,12 +16,7 @@ implementation
 //procedure untuk menyimpan data ke array
 procedure simpan_ke_array(temp: peminjaman; var data_peminjaman: tabel_peminjaman);
 	begin
-		data_peminjaman.t[data_peminjaman.sz].Username := temp.Username;
-		data_peminjaman.t[data_peminjaman.sz].ID_Buku := temp.ID_Buku;
-		data_peminjaman.t[data_peminjaman.sz].Author := temp.Author;
-		data_peminjaman.t[data_peminjaman.sz].Tanggal_Peminjaman := temp.Tanggal_Peminjaman;
-		data_peminjaman.t[data_peminjaman.sz].Tanggal_Batas_Pengembalian := temp.Tanggal_Batas_Pengembalian;
-		data_peminjaman.t[data_peminjaman.sz].Status_Pengembalian := temp.Status_Pengembalian;
+		data_peminjaman.t[data_peminjaman.sz] := temp;
 		data_peminjaman.sz := data_peminjaman.sz+1;
 	end;
 

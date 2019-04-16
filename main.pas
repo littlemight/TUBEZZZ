@@ -13,6 +13,7 @@ uses
     f03_findCategory,
     f04_findYear,
     f05_peminjaman,
+    f07_laporhilang,
     f08_lihatlaporan,
     f12_statistik,
     b02_denda,
@@ -69,14 +70,14 @@ procedure save();
             temp := user_handler.konversi_csv(data_user);
             simpan_csv(filename, temp);
         write('Masukkan nama File Peminjaman: '); readln(filename);
-            temp := baca_csv(filename);
-            data_peminjaman := peminjaman_Handler.tambah(temp);
+            temp := peminjaman_handler.konversi_csv(data_peminjaman);
+            simpan_csv(filename, temp);
         write('Masukkan nama File Pengembalian: '); readln(filename);
-            temp := baca_csv(filename);
-            data_pengembalian := pengembalian_handler.tambah(temp);
+            temp := pengembalian_Handler.konversi_csv(data_pengembalian);
+            simpan_csv(filename, temp);
         write('Masukkan nama File Buku Hilang: '); readln(filename);
-            temp := baca_csv(filename);
-            data_kehilangan := kehilangan_handler.tambah(temp);
+            temp := kehilangan_handler.konversi_csv(data_kehilangan);
+            simpan_csv(filename, temp);
         WriteLn('File perpustakaan berhasil dimuat!')
     end;
 
@@ -136,6 +137,10 @@ begin
                   writeln();
                   keluarkan(data_pengembalian);
                   writeln();
+                end;
+            'lapor_hilang':
+                begin
+                  lapor(data_kehilangan, who_login.Username); 
                 end;
             'lihat_laporan':
                 begin
