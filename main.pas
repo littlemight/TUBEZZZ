@@ -12,6 +12,7 @@ uses
     f03_findCategory,
     f04_findYear,
     f05_peminjaman,
+    f08_lihatlaporan,
     f12_statistik,
     b02_denda,
     utilitas,
@@ -32,24 +33,24 @@ procedure load();
         temp : arr_str;
         filename : string;
     begin
-        write('Masukkan nama File Buku: '); readln(filename);
-            temp := baca_csv(filename);
+        // write('Masukkan nama File Buku: '); readln(filename);
+            temp := baca_csv('buku.csv');
             data_buku := buku_handler.tambah(temp);
             writeln('');
-        write('Masukkan nama File User: '); readln(filename);
-            temp := baca_csv(filename);
+        // write('Masukkan nama File User: '); readln(filename);
+            temp := baca_csv('user.csv');
             data_user := user_handler.tambah(temp);
             writeln('');
-        write('Masukkan nama File Peminjaman: '); readln(filename);
-             temp := baca_csv(filename);
+        // write('Masukkan nama File Peminjaman: '); readln(filename);
+             temp := baca_csv('peminjaman.csv');
             data_peminjaman := peminjaman_Handler.tambah(temp);
             writeln('');
-        write('Masukkan nama File Pengembalian: '); readln(filename);
-            temp := baca_csv(filename);
+        // write('Masukkan nama File Pengembalian: '); readln(filename);
+            temp := baca_csv('pengembalian.csv');
              data_pengembalian := pengembalian_handler.tambah(temp);
              writeln('');
-         write('Masukkan nama File Buku Hilang: '); readln(filename);
-          temp := baca_csv(filename);
+        //  write('Masukkan nama File Buku Hilang: '); readln(filename);
+          temp := baca_csv('kehilangan.csv');
             data_kehilangan := kehilangan_handler.tambah(temp);
             writeln('');
          WriteLn('File perpustakaan berhasil dimuat!')
@@ -66,16 +67,16 @@ procedure save();
         write('Masukkan nama File User: '); readln(filename);
             temp := user_handler.konversi_csv(data_user);
             simpan_csv(filename, temp);
-        // write('Masukkan nama File Peminjaman: '); readln(filename);
-        //     temp := baca_csv(filename);
-        //     data_peminjaman := peminjaman_Handler.tambah(temp);
-        // write('Masukkan nama File Pengembalian: '); readln(filename);
-        //     temp := baca_csv(filename);
-        //     data_pengembalian := pengembalian_handler.tambah(temp);
-        // write('Masukkan nama File Buku Hilang: '); readln(filename);
-        //     temp := baca_csv(filename);
-        //     data_kehilangan := kehilangan_handler.tambah(temp);
-        // WriteLn('File perpustakaan berhasil dimuat!')
+        write('Masukkan nama File Peminjaman: '); readln(filename);
+            temp := baca_csv(filename);
+            data_peminjaman := peminjaman_Handler.tambah(temp);
+        write('Masukkan nama File Pengembalian: '); readln(filename);
+            temp := baca_csv(filename);
+            data_pengembalian := pengembalian_handler.tambah(temp);
+        write('Masukkan nama File Buku Hilang: '); readln(filename);
+            temp := baca_csv(filename);
+            data_kehilangan := kehilangan_handler.tambah(temp);
+        WriteLn('File perpustakaan berhasil dimuat!')
     end;
 
 procedure load_menu();
@@ -133,6 +134,10 @@ begin
                   writeln();
                   keluarkan(data_pengembalian);
                   writeln();
+                end;
+            'lihat_laporan':
+                begin
+                  lihat_hilang(data_buku, data_kehilangan);
                 end;
             end; 
             readln(inp); 

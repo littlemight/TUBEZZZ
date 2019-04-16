@@ -2,6 +2,7 @@ unit utilitas;
 
 interface
 uses
+  buku_handler,
   tipe_data;
 
 const
@@ -23,6 +24,9 @@ function BedaHari(awal, akhir: String): integer;
 // General boolean utility
 function StringToBool(str: String): boolean;
 function BoolToString(bol: Boolean): string;
+
+// General Search Utility
+function findID(tabel : tabel_buku; id: string): integer;
 
 implementation
 function StringToInt(str: String): integer;
@@ -184,4 +188,19 @@ function BoolToString(bol: Boolean): string;
   begin
     if(bol=True) then BoolToString := 'True' else BoolToString := 'False';
   end;  
+
+//function cari buku berdasarkan ID , function mengembalikan indeksnya
+//Asumsikan buku ada di tabel
+function findID(tabel : tabel_buku; id: string): integer;
+	var
+		i : integer;
+	begin
+		for i := 1 to tabel.sz do
+		begin
+			if (tabel.t[i].ID_Buku=id) then
+				begin
+					findID := i;
+				end;
+		end;
+	end;
 end.

@@ -53,7 +53,7 @@ function tambah(s: arr_str): tabel_buku;
         data_tempbuku.t[data_tempbuku.sz].Kategori := temp;
         data_tempbuku.sz := data_tempbuku.sz+1;        
       end;
-      cetak(data_tempbuku);
+    //   cetak(data_tempbuku);
       tambah := data_tempbuku;
     end;
 

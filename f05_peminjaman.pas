@@ -9,26 +9,10 @@ uses
 	peminjaman_handler,
 	tipe_data;
 
-function findID(tabel : tabel_buku; id:string): integer;
 procedure simpan_ke_array(temp: peminjaman; var data_peminjaman: tabel_peminjaman);
 procedure pinjam(var data_peminjaman: tabel_peminjaman; data_buku: tabel_buku; username: string);
 
 implementation
-//function cari buku berdasarkan ID , function mengembalikan indeksnya
-//Asumsikan buku ada di tabel
-function findID(tabel : tabel_buku; id:string): integer;
-	var
-		i : integer;
-	begin
-		for i := 1 to tabel.sz do
-		begin
-			if (tabel.t[i].ID_Buku=id) then
-				begin
-					findID := i;
-				end;
-		end;
-	end;
-
 //procedure untuk menyimpan data ke array
 procedure simpan_ke_array(temp: peminjaman; var data_peminjaman: tabel_peminjaman);
 	begin

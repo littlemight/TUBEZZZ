@@ -51,7 +51,7 @@ function tambah(s: arr_str): tabel_pengembalian;
         data_temppengembalian.t[data_temppengembalian.sz].Tanggal_Pengembalian := temp;
         data_temppengembalian.sz := data_temppengembalian.sz+1;        
       end;
-      keluarkan(data_temppengembalian);
+    //   keluarkan(data_temppengembalian);
       tambah := data_temppengembalian;
     end;
 

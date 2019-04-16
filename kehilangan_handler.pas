@@ -7,7 +7,7 @@ const
     nmax = 1000;
 type
     kehilangan = record
-            Username, ID_Buku_Hilang, Tanggal_Laporan: string;
+            Username, ID_Buku, Tanggal_Laporan: string;
         end;
     tabel_kehilangan = record
                t: array [0..nmax] of kehilangan;
@@ -42,7 +42,7 @@ function tambah(s: arr_str): tabel_kehilangan;
                 // 0 based indexing
                 case col of
                     0: data_tempkehilangan.t[data_tempkehilangan.sz].Username := temp;
-                    1: data_tempkehilangan.t[data_tempkehilangan.sz].ID_Buku_Hilang := temp;
+                    1: data_tempkehilangan.t[data_tempkehilangan.sz].ID_Buku := temp;
                 end;
                 col := col+1;
                 temp := '';
@@ -51,7 +51,7 @@ function tambah(s: arr_str): tabel_kehilangan;
         data_tempkehilangan.t[data_tempkehilangan.sz].Tanggal_Laporan := temp;
         data_tempkehilangan.sz := data_tempkehilangan.sz+1;        
       end;
-      output(data_tempkehilangan);
+    //   output(data_tempkehilangan);
       tambah := data_tempkehilangan;
     end;
 
@@ -64,7 +64,7 @@ function konversi_csv(data_tempkehilangan: tabel_kehilangan): arr_str;
         for i:=0 to data_tempkehilangan.sz do
         begin
             ret.st[i] := data_tempkehilangan.t[i].Username + ',' +
-                      data_tempkehilangan.t[i].ID_Buku_Hilang + ',' +
+                      data_tempkehilangan.t[i].ID_Buku + ',' +
                       data_tempkehilangan.t[i].Tanggal_Laporan;
         end;
         konversi_csv := ret;
@@ -76,7 +76,7 @@ procedure output(data_tempkehilangan: tabel_kehilangan); // for debugging
     begin
         for i:=0 to data_tempkehilangan.sz-1 do
         begin
-            writeln(data_tempkehilangan.t[i].Username, ' | ', data_tempkehilangan.t[i].ID_Buku_Hilang, ' | ', data_tempkehilangan.t[i].Tanggal_Laporan);
+            writeln(data_tempkehilangan.t[i].Username, ' | ', data_tempkehilangan.t[i].ID_Buku, ' | ', data_tempkehilangan.t[i].Tanggal_Laporan);
         end;
     end;
 

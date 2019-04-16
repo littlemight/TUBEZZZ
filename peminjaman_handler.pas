@@ -55,7 +55,7 @@ function tambah(s: arr_str): tabel_peminjaman;
         data_temppeminjaman.t[data_temppeminjaman.sz].Status_Pengembalian := temp;
         data_temppeminjaman.sz := data_temppeminjaman.sz+1;        
       end;
-      tulis(data_temppeminjaman);
+    //   tulis(data_temppeminjaman);
       tambah := data_temppeminjaman;
     end;
 

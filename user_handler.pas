@@ -77,7 +77,7 @@ function tambah(s: arr_str): tabel_user;
         data_tempuser.t[data_tempuser.sz].Role := temp;
         data_tempuser.sz := data_tempuser.sz+1;        
       end;
-      print(data_tempuser);
+    //   print(data_tempuser);
       tambah := data_tempuser;
     end;
 
