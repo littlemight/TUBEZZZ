@@ -11,6 +11,7 @@ uses
     f02_Login,
     f03_findCategory,
     f04_findYear,
+    f05_peminjaman,
     f12_statistik,
     b02_denda,
     utilitas,
@@ -119,6 +120,10 @@ begin
                 begin
                   getStatistik(data_user, data_buku);
                 end;
+            'pinjam_buku':
+                begin
+                  pinjam(data_peminjaman, data_buku, who_login.Username);
+                end;
             'kembalikan_buku':
                 begin
                   kembalikan_buku(who_login,data_peminjaman,data_buku,data_pengembalian);
@@ -132,7 +137,7 @@ begin
             end; 
             readln(inp); 
         end;
-        // kayanya yang koma harus asistensi jir
+        
         if(inp='exit') then
         begin
             writeln('Keluar ya gan hehe');

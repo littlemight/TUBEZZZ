@@ -29,8 +29,6 @@ function StringToInt(str: String): integer;
     var
         temp, ref, i : integer;
     begin
-      // val(str, temp);
-      // StringToInt := temp;
       ref := ord('0');
       temp := 0;
       for i:=1 to length(str) do 
@@ -126,11 +124,14 @@ function TambahDenda(tgl: string): string;
   begin
     cur := StringToTanggal(tgl);
     if(CekKabisat(cur.tahun)) then hariUtkBulan[2] := hariUtkBulan[2]+1;
+
     ret.hari := (cur.hari + waktu_denda) mod hariUtkBulan[cur.bulan];
     if(ret.hari = 0) then ret.hari := hariUtkBulan[cur.bulan];
     ret.bulan := (cur.bulan + (cur.hari + waktu_denda) div hariUtkBulan[cur.bulan]) mod 12;
     if(ret.bulan = 0) then ret.bulan := 12;
-    ret.tahun := cur.tahun + (cur.bulan + (cur.hari + waktu_denda) div hariUtkBulan[cur.bulan]) div 12;
+    ret.tahun := cur.tahun;
+    if((cur.bulan + (cur.hari + waktu_denda) div hariUtkBulan[cur.bulan]) <> 12) then
+      ret.tahun := ret.tahun + (cur.bulan + (cur.hari + waktu_denda) div hariUtkBulan[cur.bulan]) div 12;
 
     writeln(TanggalToString(ret));
 
