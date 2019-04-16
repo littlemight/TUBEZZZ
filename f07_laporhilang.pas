@@ -10,17 +10,14 @@ procedure lapor(var data_kehilangan: tabel_kehilangan; username: String);
 implementation
 procedure lapor(var data_kehilangan: tabel_kehilangan; username: String);
     var
-        id, judul, tanggal: string;
+        judul: string;
         temp: kehilangan;
     begin
-      writeln('Masukkan id buku: '); readln(id);
-      writeln('Masukkan judul buku: '); readln(judul);
-      writeln('Masukkan tanggal pelaporan: '); readln(tanggal);
+      temp.username := username;
+      write('Masukkan id buku: '); readln(temp.id_buku);
+      write('Masukkan judul buku: '); readln(judul);
+      write('Masukkan tanggal pelaporan: '); readln(temp.tanggal_laporan);
       writeln('');
-      
-      temp.Username := username;
-      temp.ID_Buku := id;
-      temp.Tanggal_Laporan := tanggal;
 
       data_kehilangan.sz := data_kehilangan.sz+1;
       data_kehilangan.t[data_kehilangan.sz-1] := temp;

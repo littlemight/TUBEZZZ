@@ -15,6 +15,7 @@ uses
     f05_peminjaman,
     f07_laporhilang,
     f08_lihatlaporan,
+    f09_tambahbaru,
     f12_statistik,
     b02_denda,
     utilitas,
@@ -145,6 +146,10 @@ begin
             'lihat_laporan':
                 begin
                   lihat_hilang(data_buku, data_kehilangan);
+                end;
+            'tambah_buku':
+                begin
+                  tambah_baru(data_buku);
                 end;
             end; 
             readln(inp); 
