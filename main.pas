@@ -188,8 +188,8 @@ begin
                     if(inp='exit') then
                         begin
 						    writeln('Apakah anda mau melakukan penyimpanan file yang sudah dilakukan (Y/N) ?');
-							readln(inp);
-							if (inp = 'Y') then save();
+							readln(c);
+							if (c = 'Y') then save();
 						end;
                     end else 
                 if (who_login.Role = 'Pengunjung') then
@@ -211,8 +211,8 @@ begin
                 if(inp='exit') then
                     begin
 						writeln('Apakah anda mau melakukan penyimpanan file yang sudah dilakukan (Y/N) ?');
-						readln(inp);
-						if (inp = 'Y') then save();
+						readln(c);
+						if (c = 'Y') then save();
                     end;
              end;
     end;
