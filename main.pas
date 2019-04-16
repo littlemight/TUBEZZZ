@@ -2,6 +2,7 @@ Program main;
 
 uses
     csv_parser,
+    crt,
     buku_handler,
     user_handler,
     peminjaman_Handler,
@@ -93,6 +94,7 @@ procedure load_menu();
 	
 begin
     load();
+    clrscr();
     load_menu();
     readln(inp);
     if(inp='exit') then writeln('keluar ya gan') else
