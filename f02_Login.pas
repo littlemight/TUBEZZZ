@@ -4,7 +4,8 @@ interface
 uses
     csv_parser,
     crt,
-    user_handler;
+    user_handler,
+    b01_simpanpw;
 
 function login(var data_user : tabel_user) : user;
 function isLogin(var who_login : User) : Boolean;
@@ -40,7 +41,7 @@ function login(var data_user : tabel_user) : user;
         i : integer;
     begin
         write('Masukkan username: '); readln(username);
-        write('Masukkan password: '); password := tutupinInput();
+        write('Masukkan password: '); password := rollHash(tutupinInput());
         have_login := False;
         for i:= 1 to data_user.sz do
             begin

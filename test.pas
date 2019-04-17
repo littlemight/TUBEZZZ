@@ -1,14 +1,12 @@
 Program test;
 
 uses
-  utilitas,
-  tipe_data;
+  b01_simpanpw,
+  utilitas;
 
 var
-  tgl1, tgl2: string;
-
+  coba: string;
 begin
-  readln(tgl1);
-  readln(tgl2);
-  writeln(BedaHari(tgl1, tgl2));
+  readln(coba);
+  writeln(rollHash(coba));
 end.

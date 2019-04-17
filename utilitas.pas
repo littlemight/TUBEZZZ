@@ -12,6 +12,7 @@ const
 function StringToInt(str: String): integer;
 function StringToInt64(str: String): int64;
 function IntToString(angka: Integer): string;
+function Int64ToString(angka: Int64): string;
 
 // General date utility
 function TanggalToString(date: tanggal): string;
@@ -58,6 +59,14 @@ function IntToString(angka: Integer): string;
   begin
     str(angka, temp);
     IntToString := temp;
+  end;
+
+function Int64ToString(angka: Int64): string;
+  var
+    temp : string;
+  begin
+    str(angka, temp);
+    Int64ToString := temp;
   end;
 
 function StringToTanggal(str: String): tanggal;
