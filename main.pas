@@ -2,12 +2,12 @@ Program main;
 
 uses
     csv_parser,
-    crt,
     buku_handler,
     user_handler,
     peminjaman_Handler,
     pengembalian_Handler,
     kehilangan_handler,
+    crt,
     f01_registrasi,
     f02_Login,
     f03_findCategory,
@@ -20,9 +20,8 @@ uses
     f10_tambahjumlah,
     f11_riwayatPeminjaman,
     f12_statistik,
-    // belum bikin jadi unit
-    //f13_load,
-    //f14_save,
+    f13_load,
+    f14_save,
     f15_carianggota,
     b02_denda,
     utilitas,
@@ -45,52 +44,6 @@ procedure end_of_submenu(var inp : Char);
     writeln('Press Any Key to Proceed');
     inp := readkey;
     clrscr();
-    end;
-
-procedure load();
-    var
-        temp : arr_str;
-        filename : string;
-    begin
-        write('Masukkan nama File Buku: '); readln(filename);
-            temp := baca_csv(filename);
-            data_buku := buku_handler.tambah(temp);
-        write('Masukkan nama File User: '); readln(filename);
-            temp := baca_csv(filename);
-            data_user := user_handler.tambah(temp);
-        write('Masukkan nama File Peminjaman: '); readln(filename);
-             temp := baca_csv(filename);
-            data_peminjaman := peminjaman_Handler.tambah(temp);
-        write('Masukkan nama File Pengembalian: '); readln(filename);
-            temp := baca_csv(filename);
-             data_pengembalian := pengembalian_handler.tambah(temp);
-         write('Masukkan nama File Buku Hilang: '); readln(filename);
-          temp := baca_csv(filename);
-            data_kehilangan := kehilangan_handler.tambah(temp);
-         WriteLn('File perpustakaan berhasil dimuat!')
-    end;
-
-procedure save();
-    var
-        temp : arr_str;
-        filename : string;
-    begin
-        write('Masukkan nama File Buku: '); readln(filename);
-            temp := baca_csv(filename);
-            data_buku := buku_handler.tambah(temp);
-        write('Masukkan nama File User: '); readln(filename);
-            temp := baca_csv(filename);
-            data_user := user_handler.tambah(temp);
-        write('Masukkan nama File Peminjaman: '); readln(filename);
-             temp := baca_csv(filename);
-            data_peminjaman := peminjaman_Handler.tambah(temp);
-        write('Masukkan nama File Pengembalian: '); readln(filename);
-            temp := baca_csv(filename);
-             data_pengembalian := pengembalian_handler.tambah(temp);
-         write('Masukkan nama File Buku Hilang: '); readln(filename);
-          temp := baca_csv(filename);
-            data_kehilangan := kehilangan_handler.tambah(temp);
-         WriteLn('File perpustakaan berhasil dimuat!')
     end;
 
 procedure load_menu_admin();
@@ -124,6 +77,8 @@ procedure load_menu_pengunjung();
 	end;					
 
 begin
+    clrscr();
+    
 	// loading files
     writeln('Load file by writing "load"'); 
     write('$ '); 
@@ -133,7 +88,7 @@ begin
 			if (inp <> 'load') then write('$ ');
 		end;
 	until(inp = 'load');
-	load();
+	load(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);
 	end_of_submenu(c);
     
     // login
@@ -166,7 +121,7 @@ begin
     begin
 		writeln('Apakah anda mau melakukan penyimpanan file yang sudah dilakukan (Y/N) ?');
 		readln(inp);
-		if (inp = 'Y') then save();
+		if (inp = 'Y') then save(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);
 	end else
     begin
         while(inp <> 'exit') do
@@ -181,7 +136,7 @@ begin
                             'tambah_buku'        : begin tambah_baru(data_buku);             end;
                             'tambah_jumlah_buku' : begin tambah_jumlah(data_buku);           end;
                             'statistik'          : begin getStatistik(data_user, data_buku); end;
-                            'save'               : begin save();                             end;
+                            'save'               : begin save(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);                             end;
                             'cari_anggota'       : begin lihatUser(data_user); end;
                             'riwayat'            : begin lihathistory(data_buku,data_peminjaman); end;
                        end;
@@ -192,14 +147,14 @@ begin
                         begin
 						    writeln('Apakah anda mau melakukan penyimpanan file yang sudah dilakukan (Y/N) ?');
 							readln(c);
-							if (c = 'Y') then save();
+							if (c = 'Y') then save(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);
 						end;
                     end else 
                 if (who_login.Role = 'Pengunjung') then
 				    begin
                        case inp of
                             'cari'               : begin cari_kategori(data_buku);           end;
-                            'save'               : begin save();                             end;
+                            'save'               : begin save(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);                             end;
                             'caritahunterbit'    : begin getStatistik(data_user, data_buku); end;
                             'pinjam_buku'        : begin pinjam(data_peminjaman,data_buku,who_login.username);              end;
                             'lapor_hilang'       : begin lapor(data_kehilangan, who_login.Username); end;
@@ -214,7 +169,12 @@ begin
                     begin
 						writeln('Apakah anda mau melakukan penyimpanan file yang sudah dilakukan (Y/N) ?');
 						readln(c);
-						if (c = 'Y') then save();
+                        while((c <> 'Y') and (c <> 'N')) do
+                        begin
+                            writeln('Masukkan adalah (Y/N)!');
+                            readln(c);
+                        end;
+						if (c = 'Y') then save(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);
                     end;
              end;
     end;
