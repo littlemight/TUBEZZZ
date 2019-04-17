@@ -194,12 +194,11 @@ begin
                     end else 
                 if (who_login.Role = 'Pengunjung') then
 				    begin
-				    load_menu_pengunjung();
                        case inp of
                             'cari'               : begin cari_kategori(data_buku);           end;
                             'save'               : begin save();                             end;
                             'caritahunterbit'    : begin getStatistik(data_user, data_buku); end;
-                            'pinjam_buku'        : begin cari_tahun(data_buku);              end;
+                            'pinjam_buku'        : begin pinjam(data_peminjaman,data_buku,who_login.username);              end;
                             'lapor_hilang'       : begin lapor(data_kehilangan, who_login.Username); end;
                             'kembalikan_buku'    : begin
 														 b02_denda.kembalikan_buku(who_login,data_peminjaman,data_buku,data_pengembalian);

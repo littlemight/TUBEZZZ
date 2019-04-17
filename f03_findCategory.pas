@@ -73,7 +73,6 @@ procedure cetak(data_input : tabel_buku);
     var
         i : integer;
     begin
-        writeln(data_input.sz);
         for i := 1 to data_input.sz-1 do
         begin
             writeln(data_input.t[i].ID_Buku, ' | ', data_input.t[i].Judul_Buku, ' | ', data_input.t[i].Author);
