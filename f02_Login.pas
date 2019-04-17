@@ -5,34 +5,13 @@ uses
     csv_parser,
     crt,
     user_handler,
-    b01_simpanpw;
+    b01_simpanpw,
+    utilitas;
 
 function login(var data_user : tabel_user) : user;
 function isLogin(var who_login : User) : Boolean;
-function tutupinInput : string;
 
 implementation
-
-function tutupinInput : string;
-    var
-    inp : Char;
-    temp : string;
-
-    begin
-    temp := '';
-    repeat
-      begin
-      inp := readkey;
-      if (inp <> #13) then
-        begin
-        temp := temp + inp;
-        write('*');
-        end;
-       end;
-    until (inp = #13);
-    writeln;
-    tutupinInput := temp;
-    end;
 
 function login(var data_user : tabel_user) : user;
     var

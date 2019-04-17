@@ -5,7 +5,8 @@ uses
     csv_parser,
     f02_login,
     b01_simpanpw,
-    user_handler;
+    user_handler,
+    utilitas;
 
 procedure registrasi(var data_user : tabel_user);
 

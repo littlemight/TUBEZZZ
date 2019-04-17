@@ -2,6 +2,7 @@ unit utilitas;
 
 interface
 uses
+  crt,
   buku_handler,
   tipe_data;
 
@@ -28,6 +29,9 @@ function BoolToString(bol: Boolean): string;
 
 // General Search Utility
 function findID(tabel : tabel_buku; id: string): integer;
+
+// Password Masking Utility
+function tutupinInput : string;
 
 implementation
 function StringToInt(str: String): integer;
@@ -212,4 +216,51 @@ function findID(tabel : tabel_buku; id: string): integer;
 				end;
 		end;
 	end;
+
+function tutupinInput : string;
+    var
+    inp : Char;
+    temp : string;
+
+    begin
+      temp := '';
+      // repeat
+      //   begin
+      //   inp := readkey;
+      //   if (inp <> #13) then
+      //     begin
+      //     temp := temp + inp;
+      //     write('*');
+      //     end;
+      //   end;
+      // until (inp = #13);
+      // writeln;
+      // tutupinInput := temp;
+
+      repeat
+        begin
+          inp :=ReadKey;
+          
+          if (inp<>#13) then
+          begin
+            if (inp=#8) then
+            begin
+              if (length(temp)<>0) then
+              begin
+                Delete(temp,Length(temp),1);
+                write(inp);
+                ClrEol;
+              end;
+            end else
+            begin
+              temp := temp + inp;
+              write('*') 
+            end;
+          end;
+        end;
+      until (inp=#13);
+      writeln();
+      tutupinInput := temp;
+    end;
+
 end.
