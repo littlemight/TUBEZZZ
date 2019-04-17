@@ -18,6 +18,10 @@ uses
     f09_tambahbaru,
     f10_tambahjumlah,
     f12_statistik,
+    // belum bikin jadi unit
+    //f13_load,
+    //f14_save,
+    f15_carianggota,
     b02_denda,
     utilitas,
     tipe_data;
@@ -100,6 +104,8 @@ begin
     clrscr();
     load_menu();
     readln(inp);
+    
+    
     if(inp='exit') then writeln('keluar ya gan') else
     begin
         while(inp <> 'exit') do
@@ -155,6 +161,10 @@ begin
             'tambah_jumlah_buku':
                 begin
                   tambah_jumlah(data_buku);
+                end;
+            'cari_anggota':
+                begin
+                  cari_anggota(data_user);
                 end;
             end; 
             readln(inp); 
