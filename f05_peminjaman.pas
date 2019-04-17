@@ -43,13 +43,13 @@ procedure pinjam(var data_peminjaman: tabel_peminjaman; data_buku: tabel_buku; u
 			begin
 				peminjaman_temp.Author := data_buku.t[i].Author;
 				writeln('Buku',data_buku.t[i].Judul_Buku ,'berhasil dipinjam!');
-				writeln('Tersisa', StringToInt(data_buku.t[i].Jumlah_Buku)-1 ,'buku','judul buku');
+				writeln('Tersisa ', StringToInt(data_buku.t[i].Jumlah_Buku)-1 ,' buku',' judul buku');
 				writeln('Terima kasih sudah meminjam');
 
 				//update jumlah pda buku.csv -1
 				data_buku.t[i].Jumlah_Buku := IntToString(StringToInt(data_buku.t[i].Jumlah_Buku)-1);
 				simpan_ke_array(peminjaman_temp, data_peminjaman);
-				peminjaman_handler.tulis(data_peminjaman);			
+		
 			end
 		else //jumlah =0
 			begin

@@ -13,10 +13,12 @@ uses
     f03_findCategory,
     f04_findYear,
     f05_peminjaman,
+    f06_KembalikanBuku,
     f07_laporhilang,
     f08_lihatlaporan,
     f09_tambahbaru,
     f10_tambahjumlah,
+    f11_riwayatPeminjaman,
     f12_statistik,
     // belum bikin jadi unit
     //f13_load,
@@ -35,32 +37,36 @@ var
     who_login : user;
     have_login : Boolean;
     inp : string;
+    c : char;
+	
+procedure end_of_submenu(var inp : Char);
+    begin
+    writeln;
+    writeln('Press Any Key to Proceed');
+    inp := readkey;
+    clrscr();
+    end;
 
 procedure load();
     var
         temp : arr_str;
         filename : string;
     begin
-        // write('Masukkan nama File Buku: '); readln(filename);
-            temp := baca_csv('buku.csv');
+        write('Masukkan nama File Buku: '); readln(filename);
+            temp := baca_csv(filename);
             data_buku := buku_handler.tambah(temp);
-            writeln('');
-        // write('Masukkan nama File User: '); readln(filename);
-            temp := baca_csv('user.csv');
+        write('Masukkan nama File User: '); readln(filename);
+            temp := baca_csv(filename);
             data_user := user_handler.tambah(temp);
-            writeln('');
-        // write('Masukkan nama File Peminjaman: '); readln(filename);
-             temp := baca_csv('peminjaman.csv');
+        write('Masukkan nama File Peminjaman: '); readln(filename);
+             temp := baca_csv(filename);
             data_peminjaman := peminjaman_Handler.tambah(temp);
-            writeln('');
-        // write('Masukkan nama File Pengembalian: '); readln(filename);
-            temp := baca_csv('pengembalian.csv');
+        write('Masukkan nama File Pengembalian: '); readln(filename);
+            temp := baca_csv(filename);
              data_pengembalian := pengembalian_handler.tambah(temp);
-             writeln('');
-        //  write('Masukkan nama File Buku Hilang: '); readln(filename);
-          temp := baca_csv('kehilangan.csv');
+         write('Masukkan nama File Buku Hilang: '); readln(filename);
+          temp := baca_csv(filename);
             data_kehilangan := kehilangan_handler.tambah(temp);
-            writeln('');
          WriteLn('File perpustakaan berhasil dimuat!')
     end;
 
@@ -70,110 +76,147 @@ procedure save();
         filename : string;
     begin
         write('Masukkan nama File Buku: '); readln(filename);
-            temp := buku_handler.konversi_csv(data_buku);
-            simpan_csv(filename, temp);
+            temp := baca_csv(filename);
+            data_buku := buku_handler.tambah(temp);
         write('Masukkan nama File User: '); readln(filename);
-            temp := user_handler.konversi_csv(data_user);
-            simpan_csv(filename, temp);
+            temp := baca_csv(filename);
+            data_user := user_handler.tambah(temp);
         write('Masukkan nama File Peminjaman: '); readln(filename);
-            temp := peminjaman_handler.konversi_csv(data_peminjaman);
-            simpan_csv(filename, temp);
+             temp := baca_csv(filename);
+            data_peminjaman := peminjaman_Handler.tambah(temp);
         write('Masukkan nama File Pengembalian: '); readln(filename);
-            temp := pengembalian_Handler.konversi_csv(data_pengembalian);
-            simpan_csv(filename, temp);
-        write('Masukkan nama File Buku Hilang: '); readln(filename);
-            temp := kehilangan_handler.konversi_csv(data_kehilangan);
-            simpan_csv(filename, temp);
-        WriteLn('File perpustakaan berhasil dimuat!')
+            temp := baca_csv(filename);
+             data_pengembalian := pengembalian_handler.tambah(temp);
+         write('Masukkan nama File Buku Hilang: '); readln(filename);
+          temp := baca_csv(filename);
+            data_kehilangan := kehilangan_handler.tambah(temp);
+         WriteLn('File perpustakaan berhasil dimuat!')
     end;
 
-procedure load_menu();
+procedure load_menu_admin();
 	begin
-		writeln('Menu :');
-		writeln('1. login : Login ke sistem ini ');
-		writeln('2. cari : Mencari berdasarkan kategori buku');
-		writeln('3. caritahunterbit : Mencari berdasarkan tahun terbit');
-		writeln('4. pinjam_buku : Meminjam buku');
-		writeln('5. kembalikan_buku : Mengembalikan Buku');
-		writeln('6. lapor_hilang : Melapor mengenai buku yang hilang');
-		writeln('Masukkan pilihan anda : ');
+	writeln('Menu: ');
+	writeln('1. register : registrasi akun');
+	writeln('2. cari : mencari buku berdasarkan kategori');
+	writeln('3. caritahunterbit : mencari buku berdasarkan tahun terbit.');
+	writeln('4. lihat_laporan : melihat laporan buku yang hilang');
+	writeln('5. tambah_buku : menambahkan buku baru');
+	writeln('6. tambah_jumlah_buku : menambahkan sejumlah buku lama');
+	writeln('7. statistik : meliat statistik user dan buku perkategori');
+	writeln('8. save : menyimpan perubahan data');
+	writeln('9. cari_anggota : mencari data nama dan alamat anggota');
+	writeln('10. riwayat : melihat riwayat peminjaman buku oleh seorang pengunjung');
+	writeln('11. exit : keluar dari program');
+	writeln('Masukkan pilihan Anda: ');
 	end;
 	
+procedure load_menu_pengunjung();
+	begin
+	writeln('Menu: ');
+	writeln('1. cari : mencari buku berdasarkan kategori');
+	writeln('2. save : menyimpan perubahan data');
+	writeln('3. caritahunterbit : mencari buku berdasarkan tahun terbit.');
+	writeln('4. pinjam_buku : meminjam satu buku');
+	writeln('5. lapor_hilang : melaporkan buku yang hilang');
+	writeln('6. kembalikan_buku : mengembalikan buku');
+	writeln('7. exit : keluar dari program');
+	writeln('Masukkan pilihan Anda: ');
+	end;					
+
 begin
-    load();
+	// loading files
+    writeln('Load file by writing "load"'); 
+    write('$ '); 
+    repeat
+		begin
+			readln(inp);
+			if (inp <> 'load') then write('$ ');
+		end;
+	until(inp = 'load');
+	load();
+	end_of_submenu(c);
+    
+    // login
+    writeln('Silahkan Login dengan mengetik "login" terlebih dahulu'); write('$ ');
+    repeat
+		begin
+			readln(inp);
+			if (inp <> 'login') then write('$ ');
+		end;
+	until(inp = 'login');
+    repeat
+      begin
+        who_login := login(data_user);
+        have_login := isLogin(who_login);
+        if (have_login = False) then
+            begin
+                write('$ ');readln(inp);
+            end;
+      end;
+    until (have_login = True);
+    writeln;
+    writeln('Press Any Key to Proceed');
+    inp := readkey;
     clrscr();
-    load_menu();
-    readln(inp);
     
-    
-    if(inp='exit') then writeln('keluar ya gan') else
+    // algoritma utama
+    if (who_login.Role = 'Admin') then load_menu_admin() else load_menu_pengunjung();
+	write('$ '); readln(inp);
+    if(inp='exit') then 
+    begin
+		writeln('Apakah anda mau melakukan penyimpanan file yang sudah dilakukan (Y/N) ?');
+		readln(inp);
+		if (inp = 'Y') then save();
+	end else
     begin
         while(inp <> 'exit') do
-        begin
-            case inp of 
-			'register' :
-				begin
-                    registrasi(data_user);
-				end;
-            'login' :
-                begin
-                    who_login := login(data_user);
-                    have_login := isLogin(who_login);
-                end;
-            'cari':
-                begin
-                    cari_kategori(data_buku);  
-                end;
-            'caritahunterbit':
-                begin
-                    cari_tahun(data_buku);
-                end;
-            'statistik':
-                begin
-                  getStatistik(data_user, data_buku);
-                end;
-            'pinjam_buku':
-                begin
-                  pinjam(data_peminjaman, data_buku, who_login.Username);
-                end;
-            'kembalikan_buku':
-                begin
-                  kembalikan_buku(who_login,data_peminjaman,data_buku,data_pengembalian);
-                  cetak(data_buku);
-                  writeln();
-                  tulis(data_peminjaman);
-                  writeln();
-                  keluarkan(data_pengembalian);
-                  writeln();
-                end;
-            'lapor_hilang':
-                begin
-                  lapor(data_kehilangan, who_login.Username); 
-                end;
-            'lihat_laporan':
-                begin
-                  lihat_hilang(data_buku, data_kehilangan);
-                end;
-            'tambah_buku':
-                begin
-                  tambah_baru(data_buku);
-                end;
-            'tambah_jumlah_buku':
-                begin
-                  tambah_jumlah(data_buku);
-                end;
-            'cari_anggota':
-                begin
-                  cari_anggota(data_user);
-                end;
-            end; 
-            readln(inp); 
-        end;
-        
-        if(inp='exit') then
-        begin
-            writeln('Keluar ya gan hehe');
-            save();
-        end;
+			begin
+				if (who_login.Role = 'Admin') then
+					begin
+						case inp of 
+							'register'           : begin registrasi(data_user);              end;
+							'cari'               : begin cari_kategori(data_buku);           end;
+                            'caritahunterbit'    : begin cari_tahun(data_buku);              end;    
+                            'lihat_laporan'      : begin lihat_hilang(data_buku,data_kehilangan); end;
+                            'tambah_buku'        : begin tambah_baru(data_buku);             end;
+                            'tambah_jumlah_buku' : begin tambah_jumlah(data_buku);           end;
+                            'statistik'          : begin getStatistik(data_user, data_buku); end;
+                            'save'               : begin save();                             end;
+                            'cari_anggota'       : begin lihatUser(data_user); end;
+                            'riwayat'            : begin lihathistory(data_buku,data_peminjaman); end;
+                       end;
+                    end_of_submenu(c);
+                    load_menu_admin();
+                    write('$ '); readln(inp); 
+                    if(inp='exit') then
+                        begin
+						    writeln('Apakah anda mau melakukan penyimpanan file yang sudah dilakukan (Y/N) ?');
+							readln(c);
+							if (c = 'Y') then save();
+						end;
+                    end else 
+                if (who_login.Role = 'Pengunjung') then
+				    begin
+                       case inp of
+                            'cari'               : begin cari_kategori(data_buku);           end;
+                            'save'               : begin save();                             end;
+                            'caritahunterbit'    : begin getStatistik(data_user, data_buku); end;
+                            'pinjam_buku'        : begin pinjam(data_peminjaman,data_buku,who_login.username);              end;
+                            'lapor_hilang'       : begin lapor(data_kehilangan, who_login.Username); end;
+                            'kembalikan_buku'    : begin
+														 b02_denda.kembalikan_buku(who_login,data_peminjaman,data_buku,data_pengembalian);
+												   end;
+					end;
+                end_of_submenu(c);
+                load_menu_pengunjung();
+                write('$ '); readln(inp); 
+                if(inp='exit') then
+                    begin
+						writeln('Apakah anda mau melakukan penyimpanan file yang sudah dilakukan (Y/N) ?');
+						readln(c);
+						if (c = 'Y') then save();
+                    end;
+             end;
     end;
+end;
 end.
