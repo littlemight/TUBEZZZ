@@ -36,49 +36,12 @@ var
     who_login : user;
     have_login : Boolean;
     inp : string;
-    c : char;
-	
-procedure end_of_submenu(var inp : Char);
-    begin
-    writeln;
-    writeln('Press Any Key to Proceed');
-    inp := readkey;
-    clrscr();
-    end;
+    c : char;					
 
-procedure load_menu_admin();
-	begin
-	writeln('Menu: ');
-	writeln('1. register : registrasi akun');
-	writeln('2. cari : mencari buku berdasarkan kategori');
-	writeln('3. caritahunterbit : mencari buku berdasarkan tahun terbit.');
-	writeln('4. lihat_laporan : melihat laporan buku yang hilang');
-	writeln('5. tambah_buku : menambahkan buku baru');
-	writeln('6. tambah_jumlah_buku : menambahkan sejumlah buku lama');
-	writeln('7. statistik : meliat statistik user dan buku perkategori');
-	writeln('8. save : menyimpan perubahan data');
-	writeln('9. cari_anggota : mencari data nama dan alamat anggota');
-	writeln('10. riwayat : melihat riwayat peminjaman buku oleh seorang pengunjung');
-	writeln('11. exit : keluar dari program');
-	writeln('Masukkan pilihan Anda: ');
-	end;
-	
-procedure load_menu_pengunjung();
-	begin
-	writeln('Menu: ');
-	writeln('1. cari : mencari buku berdasarkan kategori');
-	writeln('2. save : menyimpan perubahan data');
-	writeln('3. caritahunterbit : mencari buku berdasarkan tahun terbit.');
-	writeln('4. pinjam_buku : meminjam satu buku');
-	writeln('5. lapor_hilang : melaporkan buku yang hilang');
-	writeln('6. kembalikan_buku : mengembalikan buku');
-	writeln('7. exit : keluar dari program');
-	writeln('Masukkan pilihan Anda: ');
-	end;					
 
+// Algoritma utama
 begin
     clrscr();
-    
 	// loading files
     writeln('Load file by writing "load"'); 
     write('$ '); 
@@ -106,6 +69,11 @@ begin
         if (have_login = False) then
             begin
                 write('$ ');readln(inp);
+                repeat
+					begin
+						if (inp <> 'login') then begin write('$ '); readln(inp); end;
+					end;
+				until(inp = 'login');
             end;
       end;
     until (have_login = True);
@@ -155,7 +123,7 @@ begin
                        case inp of
                             'cari'               : begin cari_kategori(data_buku);           end;
                             'save'               : begin save(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);                             end;
-                            'caritahunterbit'    : begin getStatistik(data_user, data_buku); end;
+                            'caritahunterbit'    : begin cari_tahun(data_buku); end;
                             'pinjam_buku'        : begin pinjam(data_peminjaman,data_buku,who_login.username);              end;
                             'lapor_hilang'       : begin lapor(data_kehilangan, who_login.Username); end;
                             'kembalikan_buku'    : begin

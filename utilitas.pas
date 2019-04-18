@@ -33,6 +33,11 @@ function findID(tabel : tabel_buku; id: string): integer;
 // Password Masking Utility
 function tutupinInput : string;
 
+// Menu utility
+procedure end_of_submenu(var inp : Char);
+procedure load_menu_admin();
+procedure load_menu_pengunjung();
+
 implementation
 function StringToInt(str: String): integer;
     var
@@ -263,4 +268,41 @@ function tutupinInput : string;
       tutupinInput := temp;
     end;
 
+procedure end_of_submenu(var inp : Char);
+    begin
+    writeln;
+    writeln('Press Any Key to Proceed');
+    inp := readkey;
+    clrscr();
+    end;
+  
+procedure load_menu_admin();
+	begin
+	writeln('Menu: ');
+	writeln('1. register : registrasi akun');
+	writeln('2. cari : mencari buku berdasarkan kategori');
+	writeln('3. caritahunterbit : mencari buku berdasarkan tahun terbit.');
+	writeln('4. lihat_laporan : melihat laporan buku yang hilang');
+	writeln('5. tambah_buku : menambahkan buku baru');
+	writeln('6. tambah_jumlah_buku : menambahkan sejumlah buku lama');
+	writeln('7. statistik : meliat statistik user dan buku perkategori');
+	writeln('8. save : menyimpan perubahan data');
+	writeln('9. cari_anggota : mencari data nama dan alamat anggota');
+	writeln('10. riwayat : melihat riwayat peminjaman buku oleh seorang pengunjung');
+	writeln('11. exit : keluar dari program');
+	writeln('Masukkan pilihan Anda: ');
+	end;
+
+procedure load_menu_pengunjung();
+	begin
+	writeln('Menu: ');
+	writeln('1. cari : mencari buku berdasarkan kategori');
+	writeln('2. save : menyimpan perubahan data');
+	writeln('3. caritahunterbit : mencari buku berdasarkan tahun terbit.');
+	writeln('4. pinjam_buku : meminjam satu buku');
+	writeln('5. lapor_hilang : melaporkan buku yang hilang');
+	writeln('6. kembalikan_buku : mengembalikan buku');
+	writeln('7. exit : keluar dari program');
+	writeln('Masukkan pilihan Anda: ');
+	end;
 end.

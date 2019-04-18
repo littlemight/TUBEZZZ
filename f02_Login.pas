@@ -3,6 +3,7 @@ unit f02_login;
 interface
 uses
     csv_parser,
+    aaaa,
     crt,
     user_handler,
     b01_simpanpw,
@@ -21,6 +22,7 @@ function login(var data_user : tabel_user) : user;
     begin
         write('Masukkan username: '); readln(username);
         write('Masukkan password: '); password := rollHash(tutupinInput());
+        
         have_login := False;
         for i:= 1 to data_user.sz do
             begin
