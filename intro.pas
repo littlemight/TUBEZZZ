@@ -6,6 +6,7 @@ uses crt;
 procedure printOwl();
 procedure printWelcome();
 procedure welcome();
+procedure loading();
 
 implementation
 procedure printOwl();
@@ -44,17 +45,52 @@ procedure printWelcome();
       writeln();
     end;
 
+
+procedure loading();
+    var
+      x,z : integer;
+    begin
+     clrscr;
+     gotoxy(36,10);
+     writeln('Loading..');
+     gotoxy(29,13);
+     writeln('---------------------');
+     gotoxy(29,14);
+     writeln('|');
+     gotoxy(50,14);
+     writeln('|');
+     gotoxy(29,15);
+     writeln('---------------------');
+     for x:=1 to 100 do
+    begin
+          delay(50);
+          gotoxy(38,12);
+          writeln(x,' %');
+ 
+          if(x mod 5=0) then
+        begin
+              z:=z+1;
+              gotoxy(29+z,14);
+              writeln('=');
+          end;
+     end;
+end;
+
 procedure welcome();
     var
         inp: string;
     begin
-      clrscr();
-      printWelcome();
-
+      loading();
       writeln('Press Any Key to Proceed');
       inp := readkey;
       clrscr();
+      printWelcome();
+      delay(10000);
+      clrscr();
+      clrscr();
       printOwl();
+      delay(5000);
+      clrscr();
     end;
 
 end.
