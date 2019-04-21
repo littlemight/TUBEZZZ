@@ -54,6 +54,8 @@ begin
 		end;
 	until(inp = 'load');
 	load(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);
+	clrscr();
+	loading();
 	end_of_submenu(c);
     
     // login
