@@ -1,8 +1,20 @@
-Username,ID_Buku,Author,Tanggal_Peminjaman,Tanggal_Batas_Peminjaman,Status_Pengembalian
-littlemight,16518121,Steven Halim,Steven Halim,Steven Halim,True
-Ayyub29,16518191,Sterling Children's,Sterling Children's,Sterling Children's,False
-littlemight,16518171,Jonathan Knudsen,Jonathan Knudsen,Jonathan Knudsen,True
-littlemight,2516,Purcell,Robert C. Martin,123,False
-littlemight,2516,Robert C. Martin,12/04/2019,belum tau,False
-Ayyub29,2516,Robert C. Martin,12/04/3029,belum tau,False
-kimia,2516,Robert C. Martin,12/03/1234,19/03/1234,False
+﻿Username;ID_Buku;Tanggal_Peminjaman;Tanggal_Batas_Pengembalian;Status_Pengembalian
+Nick;97147;20/12/1999;27/12/1999;Sudah
+Harry;23550;31/12/1999;07/01/2000;Belum
+Margaret;76676;20/08/2009;27/08/2009;Belum
+Brad;16059;30/08/2009;06/09/2009;Sudah
+Aiden;55697;29/02/2016;07/03/2016;Sudah
+Nicholas;85285;23/06/2017;01/07/2017;Sudah
+Rocco;18641;11/08/2017;18/08/2017;Sudah
+Owen;77545;17/02/2018;24/02/2018;Sudah
+Ciara;12033;23/02/2018;02/02/2018;Sudah
+Gladys;96965;28/02/2018;06/03/2018;Sudah
+Julian;52108;17/08/2018;25/08/2018;Sudah
+Barney;96708;10/10/2018;17/10/2018;Belum
+Bob;80430;11/11/2018;18/11/2018;Belum
+Carl;63808;31/12/2018;07/01/2019;Belum
+Cedrick;68753;01/01/2019;08/01/2019;Belum
+Julius;48958;25/03/2019;01/03/2019;Belum
+Aiden;87238;19/04/2019;26/04/2019;Belum
+Mike;87238;20/04/2019;27/04/2019;Belum
+Ayyub;87238;21/04/2019;28/04/2019;Belum

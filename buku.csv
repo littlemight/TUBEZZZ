@@ -94,7 +94,7 @@ ID_BUKU,Judul_Buku,Author,Jumlah_Buku,Tahun_Penerbit,Kategori
 18825,In Search of Lost Time,Mark Twain,77,1797,programming
 84480,Ulysses,Edgar Allan Poe,866,1849,sains
 42750,Lord of the Flies,William Shakespeare,784,1861,sastra
-99422,In Search of Lost Time,J. K. Rowling,281,1870,sains
+99422,In Search of Lost Time,J. K. Rowling,0,1870,sains
 56189,The Good Soldier,Jack London,384,2042,manga
 87236,Pride and Prejudice,William Faulkner,301,1953,manga
 45054,The Grapes of Wrath,Kurt Vonnegut,421,1761,programming
