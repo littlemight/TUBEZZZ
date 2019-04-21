@@ -8,6 +8,7 @@ uses
     pengembalian_Handler,
     kehilangan_handler,
     crt,
+    intro,
     f01_registrasi,
     f02_Login,
     f03_findCategory,
@@ -42,7 +43,7 @@ var
 
 // Algoritma utama
 begin
-    clrscr();
+    welcome();
 	// loading files
     writeln('Load file by writing "load"'); 
     write('$ '); 
@@ -81,7 +82,7 @@ begin
     writeln;
     writeln('Press Any Key to Proceed');
     inp := readkey;
-    clrscr();
+    clrscr1();
     
     // algoritma utama
     if (who_login.Role = 'Admin') then load_menu_admin() else load_menu_pengunjung();

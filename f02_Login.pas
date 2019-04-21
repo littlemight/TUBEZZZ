@@ -3,7 +3,6 @@ unit f02_login;
 interface
 uses
     csv_parser,
-    aaaa,
     crt,
     user_handler,
     b01_simpanpw,

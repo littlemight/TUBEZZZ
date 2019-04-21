@@ -3,6 +3,7 @@ unit utilitas;
 interface
 uses
   crt,
+  intro,
   buku_handler,
   tipe_data;
 
@@ -34,6 +35,7 @@ function findID(tabel : tabel_buku; id: string): integer;
 function tutupinInput : string;
 
 // Menu utility
+procedure clrscr1();
 procedure end_of_submenu(var inp : Char);
 procedure load_menu_admin();
 procedure load_menu_pengunjung();
@@ -268,12 +270,18 @@ function tutupinInput : string;
       tutupinInput := temp;
     end;
 
+procedure clrscr1();
+    begin
+      clrscr();
+      printOwl();
+    end;
+
 procedure end_of_submenu(var inp : Char);
     begin
     writeln;
     writeln('Press Any Key to Proceed');
     inp := readkey;
-    clrscr();
+    clrscr1();
     end;
   
 procedure load_menu_admin();
@@ -305,4 +313,5 @@ procedure load_menu_pengunjung();
 	writeln('7. exit : keluar dari program');
 	writeln('Masukkan pilihan Anda: ');
 	end;
+
 end.
