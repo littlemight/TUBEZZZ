@@ -23,6 +23,7 @@ uses
     f13_load,
     f14_save,
     f15_carianggota,
+    f16_exitprogram,
     b02_denda,
     utilitas,
     tipe_data;
@@ -112,11 +113,7 @@ begin
                     load_menu_admin();
                     write('$ '); readln(inp); 
                     if(inp='exit') then
-                        begin
-						    writeln('Apakah anda mau melakukan penyimpanan file yang sudah dilakukan (Y/N) ?');
-							readln(c);
-							if (c = 'Y') then save(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);
-						end;
+                        exitprogram(data_buku,data_user,data_peminjaman,data_pengembalian,data_kehilangan);
                     end else 
                 if (who_login.Role = 'Pengunjung') then
 				    begin
@@ -134,16 +131,7 @@ begin
                 load_menu_pengunjung();
                 write('$ '); readln(inp); 
                 if(inp='exit') then
-                    begin
-						writeln('Apakah anda mau melakukan penyimpanan file yang sudah dilakukan (Y/N) ?');
-						readln(c);
-                        while((c <> 'Y') and (c <> 'N')) do
-                        begin
-                            writeln('Masukkan adalah (Y/N)!');
-                            readln(c);
-                        end;
-						if (c = 'Y') then save(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);
-                    end;
+                    exitprogram(data_buku,data_user,data_peminjaman,data_pengembalian,data_kehilangan);
              end;
     end;
 end;
