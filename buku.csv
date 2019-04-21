@@ -1,7 +1,7 @@
-ID_BUKU,Judul_Buku,Author,Jumlah_Buku,Tahun_Penerbit,Kategori
+ID_Buku,Judul_Buku,Author,Jumlah_Buku,Tahun_Penerbit,Kategori
 51570,The Old Man and the Sea,Carolyn Brown,189,1984,sains
 85656,The Flowers of Evil,Margaret Atwood,876,1817,sastra
-26153,Gone With the Wind,Jules Verne,635,1685,sastra
+26153,Gone With the Wind,Jules Verne,1635,1685,sastra
 97147,The Good Soldier,Mary Shelley,590,1944,programming
 69673,The Odyssey,Oscar Wilde,964,1947,manga
 37191,Don Quixote,Franz Kafka,568,2030,programming
@@ -99,3 +99,4 @@ ID_BUKU,Judul_Buku,Author,Jumlah_Buku,Tahun_Penerbit,Kategori
 87236,Pride and Prejudice,William Faulkner,301,1953,manga
 45054,The Grapes of Wrath,Kurt Vonnegut,421,1761,programming
 97722,Gulliver's Travels,Alexander Pushkin,274,1967,sastra
+291100,Bentai Collection,Masashi Kishimura,69,2019,manga

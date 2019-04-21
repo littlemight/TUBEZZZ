@@ -2,7 +2,7 @@ unit f15_cariAnggota;
 
 interface
 uses 
-    utilitas,
+    utilitas, f02_Login,
     user_handler;
 
 var
@@ -23,7 +23,7 @@ function cek(var data_user : tabel_user; inp : string) : User; // oke
             if(inp = data_user.t[i].Username) then cek := data_user.t[i]
         end;
     end;
-
+	
 procedure cetak(var data : user);
     begin
             writeln('Nama Anggota: ', data.Nama);
@@ -37,7 +37,9 @@ procedure lihatUser(data_user : tabel_user);
     begin
         write('Masukkan username: ');
         readln(inp);
+        who_user := data_user.t[data_user.sz+1];
         who_user := cek(data_user,inp);
+        if isLogin(who_user) = False then writeln('User tidak ditemukan!') else
         cetak(who_user);
     end;
 end.
