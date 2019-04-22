@@ -84,7 +84,7 @@ procedure lihathistory(data_buku :tabel_buku; data_peminjaman : tabel_peminjaman
         if(data_bersih.sz=1) then writeln('Tidak ada peminjaman oleh user ini.')
         else 
         begin
-            urutkan(data_bersih);
+            // urutkan(data_bersih);
             cetak(data_buku,data_bersih);
         end;
     end;
