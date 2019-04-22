@@ -23,7 +23,7 @@ procedure kembalikan_buku(who_login : user; data_peminjaman : tabel_peminjaman; 
       write('Masukkan id buku yang dikembalikan: '); Readln(ID_Buku);
       for i := 1 to (data_peminjaman.sz - 1) do
 			begin
-            if ID_Buku = data_peminjaman.t[i].ID_Buku then
+            if ((ID_Buku = data_peminjaman.t[i].ID_Buku) and (who_login.Username = data_peminjaman.t[i].Username)) then
               buku_pinjam := data_peminjaman.t[i];
 			end;
       for i := 1 to (data_buku.sz - 1) do
