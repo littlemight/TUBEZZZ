@@ -102,8 +102,6 @@ function StringToTanggal(str: String): tanggal;
       end;
     end;
     temp.tahun := StringToInt(tempstr);
-    writeln(temp.hari,'/',temp.bulan,'/',temp.tahun);
-
     StringToTanggal := temp;
   end;
 
@@ -131,8 +129,6 @@ function TanggalToString(date: tanggal): string;
       end;
     end;
     ret := ret+tempstr;
-
-    writeln(ret);
     TanggalToString := ret;
   end;
 
@@ -156,8 +152,6 @@ function TambahDenda(tgl: string): string;
     ret.tahun := cur.tahun;
     if((cur.bulan + (cur.hari + waktu_denda) div hariUtkBulan[cur.bulan]) <> 12) then
       ret.tahun := ret.tahun + (cur.bulan + (cur.hari + waktu_denda) div hariUtkBulan[cur.bulan]) div 12;
-
-    writeln(TanggalToString(ret));
 
     TambahDenda := TanggalToString(ret);
   end;

@@ -1,7 +1,102 @@
 ID_Buku,Judul_Buku,Author,Jumlah_Buku,Tahun_Penerbit,Kategori
-786727,Competitive Programming,Steven Halim,23,2013,programming
-98311,Javascript for Babies,Sterling Children's,2,2012,programming
-6573,Learning Java,Jonathan Knudsen,0,2019,programming
-696969,Calculus,Purcell,9999,3019,sastra
-2516,Clean Code,Robert C. Martin,62,2009,programming
-2001,97 things every programmer should know,Kevlin Henney,10,2010,programming
+51570,The Old Man and the Sea,Carolyn Brown,189,1984,sains
+85656,The Flowers of Evil,Margaret Atwood,876,1817,sastra
+26153,Gone With the Wind,Jules Verne,1635,1685,sastra
+97147,The Good Soldier,Mary Shelley,590,1944,programming
+69673,The Odyssey,Oscar Wilde,964,1947,manga
+37191,Don Quixote,Franz Kafka,568,2030,programming
+96083,Gulliver's Travels,Herman Melville,820,2048,sastra
+50579,The Lord of The Rings,Ernest Hemingway,860,1731,programming
+23550,The Brothers Karamazov ,Ray Bradbury,507,1735,sains
+87856,Tess of the d'Urbervilles,Mark Twain,855,1836,programming
+59986,Tess of the d'Urbervilles,Carolyn Brown,724,1858,manga
+95419,The Metamorphosis,Edith Wharton,827,1905,manga
+68814,Don Quixote,Harper Lee,121,1663,programming
+76676,Ulysses,Leo Tolstoy,150,1966,sastra
+14141,Ulysses,Stephenie Meyer,320,1916,programming
+72219,The Old Man and the Sea,Ray Bradbury,230,1719,programming
+83530,Oedipus,John Steinbeck,51,2010,sains
+46734,Les Misérables,Jane Austen,126,1984,programming
+16059,Lolita,Nathaniel Hawthorne,268,1651,sains
+50163,Vanity Fair,William Shakespeare,183,1905,sastra
+54477,War and Peace,Barbara Cartland,508,1661,sains
+88448,To the Lighthouse,Jules Verne,462,1737,manga
+97519,David Copperfield,Robert Frost,876,1934,manga
+55697,The Red and the Black,Mary Shelley,690,1714,sastra
+41913,To the Lighthouse,Carolyn Brown,670,1952,sastra
+15674,War and Peace,William Faulkner,327,1850,manga
+79617,The Divine Comedy,Walt Whitman,712,1714,manga
+34508,The Handmaid's Tale,Cormac McCarthy,315,1733,manga
+85285,The Good Soldier,Henry James,565,1904,sastra
+85651,Ulysses,Ernest Hemingway,945,1669,sains
+63488,Moby Dick,Tennessee Williams,19,1780,sains
+43259,War and Peace,Jin Yong,603,1646,sastra
+37724,Ulysses,Henry James,508,1788,sains
+57024,Hamlet,Jin Yong,557,1975,programming
+27882,One Hundred Years of Solitude,Horatio Alger,284,1819,sastra
+91967,The Sound and the Fury,Nathaniel Hawthorne,470,1653,programming
+81294,The Scarlet Letter,Paulo Coelo,765,2025,sains
+36562,Lord of the Flies,Carlos Ruiz Zafon,818,1716,sastra
+18641,Les Misérables,Ernest Hemingway,723,1790,programming
+62843,Hamlet,Ralph Waldo Emerson,423,1969,sastra
+74308,Game of Thrones,Oscar Wilde,376,1911,manga
+18873,The Sound and the Fury,Kurt Vonnegut,609,1922,programming
+50147,The Flowers of Evil,Jack London,474,1718,sains
+77545,Robinson Crusoe,Agatha Christie,75,1685,programming
+43319,Anna Karenina,Ray Bradbury,628,1997,programming
+72022,Great Expectations,F. Scott Fitzgerald,299,1623,sastra
+54573,The Red and the Black,Flannery O'Connor,187,1924,manga
+28493,Madame Bovary,Dr. Seuss,217,1725,sains
+12033,The Old Man and the Sea,Alexandre Dumas,762,1902,manga
+69893,War and Peace,Robert Frost,998,1602,sains
+88685,One Thousand and One Nights,Horatio Alger,592,2014,manga
+76154,Don Quixote,J. R. R. Tolkien,230,2040,manga
+15571,Gone With the Wind,Henry James,816,1991,sains
+58830,Don Quixote,Barbara Cartland,734,1872,sastra
+37895,Gulliver's Travels,J. R. R. Tolkien,988,1885,manga
+96965,One Hundred Years of Solitude,Barbara Cartland,33,1741,manga
+52108,The Metamorphosis,Leo Tolstoy,265,1817,programming
+96708,Ulysses,Jin Yong,427,1915,programming
+80430,The Odyssey,Alexandre Dumas,192,1805,sastra
+63808,Don Quixote,Jules Verne,181,1727,sastra
+68753,The Flowers of Evil,Stephen King,291,1719,manga
+48958,Hamlet,Agatha Christie,407,1757,manga
+22320,Emma,Kurt Vonnegut,775,1947,sastra
+67587,Tess of the d'Urbervilles,Herman Melville,584,1693,sastra
+68026,Gargantua and Pantagruel,Danielle Steel,57,1796,programming
+44954,Emma,Doris Lessing,570,1875,sains
+65861,The Lord of The Rings,Stephen King,646,2047,sains
+87499,Robinson Crusoe,Emily Dickinson,509,1625,programming
+26659,To Kill a Mockingbird,Ralph Waldo Emerson,47,1843,manga
+79397, Oedipus at Colonus,Flannery O'Connor,724,1891,manga
+50213,Robinson Crusoe,Edith Wharton,75,1608,programming
+93584,Gone With the Wind,Henry James,930,1670,programming
+35993,Pride and Prejudice,Robert Frost,549,1925,sastra
+35783,Alice Adventures in Wonderland,G.R.R. Martin,856,1992,sains
+82533,Wuthering Heights,Nathaniel Hawthorne,927,1959,sains
+27928,The Divine Comedy,Danielle Steel,35,1690,sains
+17301,Ulysses,Ralph Waldo Emerson,436,1861,manga
+56412,The Scarlet Letter,Henry James,268,1941,sains
+56310,Lord of the Flies,Mark Twain,705,1797,sains
+79597,The Handmaid's Tale,Emily Dickinson,977,1721,sains
+38630,The Grapes of Wrath,Alexandre Dumas,119,1929,manga
+16663,The Scarlet Letter,C.S. Lewis,266,1811,sastra
+52948,The Odyssey,Leo Tolstoy,228,1753,sains
+95350,In Search of Lost Time,Harper Lee,195,1786,sains
+28195,One Hundred Years of Solitude,Carlos Ruiz Zafon,512,1717,sains
+20533,The Old Man and the Sea,Stephen King,675,1653,sains
+75112,Vanity Fair,Stephen King,405,1687,sains
+78127,The Scarlet Letter,Bella Forrest,404,1702,sains
+96350,In Search of Lost Time,Agatha Christie,882,1613,sains
+18677,Alice Adventures in Wonderland,Harper Lee,186,2012,programming
+82355,Gone With the Wind,Carolyn Brown,180,1667,manga
+47930,Ulysses,Nathaniel Hawthorne,970,1827,sastra
+18825,In Search of Lost Time,Mark Twain,77,1797,programming
+84480,Ulysses,Edgar Allan Poe,866,1849,sains
+42750,Lord of the Flies,William Shakespeare,784,1861,sastra
+99422,In Search of Lost Time,J. K. Rowling,0,1870,sains
+56189,The Good Soldier,Jack London,384,2042,manga
+87236,Pride and Prejudice,William Faulkner,301,1953,manga
+45054,The Grapes of Wrath,Kurt Vonnegut,421,1761,programming
+97722,Gulliver's Travels,Alexander Pushkin,274,1967,sastra
+291100,Bentai Collection,Masashi Kishimura,69,2019,manga

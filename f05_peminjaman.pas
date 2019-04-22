@@ -42,7 +42,7 @@ procedure pinjam(var data_peminjaman: tabel_peminjaman; data_buku: tabel_buku; u
 		if (StringToInt(data_buku.t[i].Jumlah_Buku) > 0) then
 			begin
 				peminjaman_temp.Author := data_buku.t[i].Author;
-				writeln('Buku',data_buku.t[i].Judul_Buku ,'berhasil dipinjam!');
+				writeln('Buku ',data_buku.t[i].Judul_Buku ,' berhasil dipinjam!');
 				writeln('Tersisa ', StringToInt(data_buku.t[i].Jumlah_Buku)-1 ,' buku',' judul buku');
 				writeln('Terima kasih sudah meminjam');
 

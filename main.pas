@@ -43,7 +43,7 @@ var
 
 // Algoritma utama
 begin
-    welcome();
+    //welcome();
 	// loading files
     writeln('Load file by writing "load"'); 
     write('$ '); 
@@ -55,7 +55,9 @@ begin
 	until(inp = 'load');
 	load(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);
 	end_of_submenu(c);
-    
+	clrscr();
+	loading();
+    end_of_submenu(c);
     // login
     writeln('Silahkan Login dengan mengetik "login" terlebih dahulu'); write('$ ');
     repeat
