@@ -43,16 +43,13 @@ procedure pinjam(var data_peminjaman: tabel_peminjaman; data_buku: tabel_buku; u
 		i := findID(data_buku, id);
 		if(i <> -1) then // Jika buku tersebut ada di data perpustakaan
 		begin
-			writeln('a');
 			if (StringToInt(data_buku.t[i].Jumlah_Buku) > 0) then
 				begin
-					writeln('b');
 					peminjaman_temp.Username := username; 
 					peminjaman_temp.ID_Buku := id; // asumsikan valid
 					peminjaman_temp.Tanggal_Peminjaman := tanggal;
 					peminjaman_temp.Tanggal_Batas_Pengembalian := TambahDenda(tanggal);
 					peminjaman_temp.Status_Pengembalian := 'False';
-					peminjaman_temp.Author := data_buku.t[i].Author;
 					writeln('Buku ',data_buku.t[i].Judul_Buku ,' berhasil dipinjam!');
 					writeln('Tersisa ', StringToInt(data_buku.t[i].Jumlah_Buku)-1 ,' buku ',data_buku.t[i].Judul_Buku);
 					writeln('Terima kasih sudah meminjam');

@@ -7,7 +7,7 @@ const
     nmax = 1000;
 type
     peminjaman = record
-            Username, ID_Buku, Author, Tanggal_Peminjaman, Tanggal_Batas_Pengembalian, Status_Pengembalian : string;
+            Username, ID_Buku, Tanggal_Peminjaman, Tanggal_Batas_Pengembalian, Status_Pengembalian : string;
         end;
     tabel_peminjaman = record
                t: array [0..nmax] of peminjaman;
@@ -43,9 +43,8 @@ function tambah(s: arr_str): tabel_peminjaman;
                 case col of
                     0: data_temppeminjaman.t[data_temppeminjaman.sz].Username := temp;
                     1: data_temppeminjaman.t[data_temppeminjaman.sz].ID_Buku := temp;
-                    2: data_temppeminjaman.t[data_temppeminjaman.sz].Author := temp;
-                    3: data_temppeminjaman.t[data_temppeminjaman.sz].Tanggal_Peminjaman := temp;
-                    4: data_temppeminjaman.t[data_temppeminjaman.sz].Tanggal_Batas_Pengembalian := temp;
+                    2: data_temppeminjaman.t[data_temppeminjaman.sz].Tanggal_Peminjaman := temp;
+                    3: data_temppeminjaman.t[data_temppeminjaman.sz].Tanggal_Batas_Pengembalian := temp;
                 end;
 
                 col := col+1;
@@ -69,7 +68,6 @@ function konversi_csv(data_temppeminjaman: tabel_peminjaman): arr_str;
         begin
             ret.st[i] := data_temppeminjaman.t[i].Username + ',' +
                       data_temppeminjaman.t[i].ID_Buku + ',' +
-                      data_temppeminjaman.t[i].Author + ',' +
                       data_temppeminjaman.t[i].Tanggal_Peminjaman + ','+
                       data_temppeminjaman.t[i].Tanggal_Batas_Pengembalian + ',' +
                       data_temppeminjaman.t[i].Status_Pengembalian;
