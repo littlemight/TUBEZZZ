@@ -72,12 +72,10 @@ begin
         have_login := isLogin(who_login);
         if (have_login = False) then
             begin
-                write('$ ');readln(inp);
                 repeat
-					begin
-						if (inp <> 'login') then begin write('$ '); readln(inp); end;
-					end;
-				until(inp = 'login');
+					who_login := login(data_user);
+					have_login := isLogin(who_login);
+				until(have_login = true);
             end;
       end;
     until (have_login = True);
@@ -91,9 +89,7 @@ begin
 	write('$ '); readln(inp);
     if(inp='exit') then 
     begin
-		writeln('Apakah anda mau melakukan penyimpanan file yang sudah dilakukan (Y/N) ?');
-		readln(inp);
-		if (inp = 'Y') then save(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);
+		exitprogram(data_buku,data_user,data_peminjaman,data_pengembalian,data_kehilangan);
 	end else
     begin
         while(inp <> 'exit') do
@@ -111,6 +107,7 @@ begin
                             'save'               : begin save(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);                             end;
                             'cari_anggota'       : begin lihatUser(data_user); end;
                             'riwayat'            : begin lihathistory(data_buku,data_peminjaman); end;
+                            else writeln('Masukan ', inp, ' tidak valid!');
                        end;
                     end_of_submenu(c);
                     load_menu_admin();
@@ -129,6 +126,7 @@ begin
                             'kembalikan_buku'    : begin
 														 b02_denda.kembalikan_buku(who_login,data_peminjaman,data_buku,data_pengembalian);
 												   end;
+							else writeln('Masukan ', inp, ' tidak valid!');
 					end;
                 end_of_submenu(c);
                 load_menu_pengunjung();
