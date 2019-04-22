@@ -56,7 +56,7 @@ function StringToInt(str: String): integer;
       StringToInt := temp;
     end;
 
-function StringToInt64(str: String): int64; // longer range, viable for hashing(?)
+function StringToInt64(str: String): int64;
     var
         temp : Int64;
     begin
@@ -109,7 +109,6 @@ function TanggalToString(date: tanggal): string;
   var
     ret, tempstr: string;
     i: integer;
-
   begin
     ret := '';
     tempstr := IntToString(date.hari);
@@ -225,18 +224,6 @@ function tutupinInput : string;
 
     begin
       temp := '';
-      // repeat
-      //   begin
-      //   inp := readkey;
-      //   if (inp <> #13) then
-      //     begin
-      //     temp := temp + inp;
-      //     write('*');
-      //     end;
-      //   end;
-      // until (inp = #13);
-      // writeln;
-      // tutupinInput := temp;
 
       repeat
         begin
