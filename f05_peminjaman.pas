@@ -9,23 +9,32 @@ uses
 	peminjaman_handler,
 	tipe_data;
 
+{ DEKLARASI FUNGSI DAN PROSEDUR }
 procedure simpan_ke_array(temp: peminjaman; var data_peminjaman: tabel_peminjaman);
 procedure pinjam(var data_peminjaman: tabel_peminjaman; data_buku: tabel_buku; username: string);
 
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
-//procedure untuk menyimpan data ke array
 procedure simpan_ke_array(temp: peminjaman; var data_peminjaman: tabel_peminjaman);
+    { DESKRIPSI	: prosedur untuk menyimpan peminjaman baru ke data peminjaman }
+	{ PARAMETER	: temp bertipe peminjaman, data_peminjaman bertipe tabel_peminjaman }
+
 	begin
 		data_peminjaman.t[data_peminjaman.sz] := temp;
 		data_peminjaman.sz := data_peminjaman.sz+1;
 	end;
 
 procedure pinjam(var data_peminjaman: tabel_peminjaman; data_buku: tabel_buku; username: string);
+    { DESKRIPSI	: prosedur untuk meminjam buku }
+	{ PARAMETER	: data_peminjaman bertipe tabel_peminjaman, data_buku bertipe tabel_peminjaman, dan username bertipe string }
+
+	{ KAMUS LOKAL }
 	var
 		id, tanggal: string;
 		i: integer;
 		temp: arr_str;
 		peminjaman_temp: peminjaman;
+	{ ALGORITMA }
 	begin
 	    write('Masukkan id buku yang ingin dipinjam: ');
 		readln(id);

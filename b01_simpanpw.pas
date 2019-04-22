@@ -9,8 +9,6 @@ interface
     m1 = 1000000009;
     m2 = 1000000007;
 
-
-
 function getLength(password: String): Integer;
 function hash1(password: String): Int64;
 function hash2(password: String): Int64;

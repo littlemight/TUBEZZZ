@@ -4,12 +4,19 @@ interface
 uses
     buku_handler;
 
+{ DEKLARASI FUNGSI DAN PROSEDUR }
 procedure tambah_baru(var data_buku: tabel_buku);
 
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
 procedure tambah_baru(var data_buku: tabel_buku);
+    { DESKRIPSI	: prosedur untuk menambahkan buku baru ke data buku }
+	{ PARAMETER	: data buku }
+
+    { KAMUS LOKAL }
     var
         temp: buku;
+    { ALGORITMA }
     begin
       writeln('Masukkan Informasi buku yang ditambahkan:');
       write('Masukkan id buku: '); readln(temp.id_buku);
