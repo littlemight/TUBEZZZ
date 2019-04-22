@@ -202,21 +202,38 @@ function BoolToString(bol: Boolean): string;
     if(bol=True) then BoolToString := 'True' else BoolToString := 'False';
   end;  
 
-//function cari buku berdasarkan ID , function mengembalikan indeksnya
-//Asumsikan buku ada di tabel
+// function cari buku berdasarkan ID , function mengembalikan indeksnya
 function findID(tabel : tabel_buku; id: string): integer;
 	var
 		i : integer;
+    found: boolean = false;
 	begin
-		for i := 1 to tabel.sz do
+    i := 1;
+		while((i < tabel.sz) and (found <> true)) do
 		begin
 			if (tabel.t[i].ID_Buku=id) then
-				begin
-					findID := i;
-				end;
+      begin
+        findID := i;
+        found := true;
+      end else i := i+1;
 		end;
+    if(found = False) then findID := -1;
 	end;
 
+// function findID(tabel : tabel_buku; id: string): integer;
+// 	var
+// 		i : integer;
+// 	begin
+// 		for i := 1 to tabel.sz do
+// 		begin
+// 			if (tabel.t[i].ID_Buku=id) then
+// 				begin
+// 					findID := i;
+// 				end;
+// 		end;
+//     writeln('h ',findID);
+	// end;
+  
 function tutupinInput : string;
     var
     inp : Char;
