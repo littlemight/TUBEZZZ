@@ -5,13 +5,20 @@ uses
     buku_handler,
     utilitas;
 
+{ DEKLARASI FUNGSI DAN PROSEDUR }
 procedure tambah_jumlah(var data_buku: tabel_buku);
 
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
 procedure tambah_jumlah(var data_buku: tabel_buku);
+    { DESKRIPSI	: prosedur untuk menambahkan jumlah buku yang sudah ada ke tabel buku }
+	  { PARAMETER	: data buku }
+
+    { KAMUS LOKAL }
     var
       id: string;
       where, banyak: integer;
+    { ALGORITMA }
     begin
       write('Masukkan ID Buku: '); readln(id);
       write('Masukkan jumlah buku yang ditambahkan: '); readln(banyak);

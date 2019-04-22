@@ -5,13 +5,20 @@ uses
     kehilangan_handler,
     utilitas;
 
+{ DEKLARASI FUNGSI DAN PROSEDUR }
 procedure lapor(var data_kehilangan: tabel_kehilangan; username: String);
 
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
 procedure lapor(var data_kehilangan: tabel_kehilangan; username: String);
+    { DESKRIPSI	: prosedur untuk melaporkan kehilangan buku }
+	{ PARAMETER	: data kehilangan dan username pelapor }
+
+    { KAMUS LOKAL }
     var
         judul: string;
         temp: kehilangan;
+    { ALGORITMA }
     begin
       temp.username := username;
       write('Masukkan id buku: '); readln(temp.id_buku);
