@@ -11,11 +11,11 @@ uses
     buku_handler;
 
 { DEKLARASI FUNGSI DAN PROSEDUR }
-procedure kembalikan_buku(who_login : user; data_peminjaman : tabel_peminjaman; data_buku : tabel_buku; data_pengembalian : tabel_pengembalian);
+procedure kembalikan_buku(who_login : user; var data_peminjaman : tabel_peminjaman; data_buku : tabel_buku; data_pengembalian : tabel_pengembalian);
 
 { IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
-procedure kembalikan_buku(who_login : user; data_peminjaman : tabel_peminjaman; data_buku : tabel_buku; data_pengembalian : tabel_pengembalian);
+procedure kembalikan_buku(who_login : user; var data_peminjaman : tabel_peminjaman; data_buku : tabel_buku; data_pengembalian : tabel_pengembalian);
     { DESKRIPSI	: prosedur untuk mengembalikan buku }
 	{ PARAMETER	: data pengguna, data peminjaman, data buku, dan data pengembalian }
 
