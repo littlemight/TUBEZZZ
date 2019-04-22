@@ -33,11 +33,11 @@ function login(var data_user : tabel_user) : user;
         while((i < data_user.sz)  and (have_login <> true))do
         begin
             if (username = data_user.t[i].Username) and (password = data_user.t[i].Password) then
-                begin
-                    login := data_user.t[i];
-                    Writeln('Selamat datang ',login.Nama,'!');
-                    have_login := True;
-                end;
+            begin
+                login := data_user.t[i];
+                Writeln('Selamat datang ',login.Nama,'!');
+                have_login := True;
+            end else i := i+1;
         end;
         if(have_login = False) then writeln('Username / password salah! Silakan coba lagi.');
     end;
