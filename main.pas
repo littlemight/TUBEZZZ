@@ -43,7 +43,7 @@ var
 
 // Algoritma utama
 begin
-    //welcome();
+    welcome();
 	// loading files
     writeln('Load file by writing "load"'); 
     write('$ '); 
