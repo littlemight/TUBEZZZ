@@ -8,10 +8,12 @@ uses
   peminjaman_handler,
   tipe_data;
 
+{ KONSTANTA }
 const
   waktu_denda = 7;
 
-// General integer utility
+{ DEKLARASI FUNGSI DAN PROSEDUR }
+// General string-integer utility
 function StringToInt(str: String): integer;
 function StringToInt64(str: String): int64;
 function IntToString(angka: Integer): string;
@@ -38,8 +40,9 @@ procedure end_of_submenu(var inp : Char);
 procedure load_menu_admin();
 procedure load_menu_pengunjung();
 
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
-function StringToInt(str: String): integer;
+function StringToInt(str: String): integer; // Mengubah string ke integer
     var
         temp, ref, i : integer;
     begin
@@ -54,7 +57,7 @@ function StringToInt(str: String): integer;
       StringToInt := temp;
     end;
 
-function StringToInt64(str: String): int64;
+function StringToInt64(str: String): int64; // Mengubah string ke integer dengan range yang lebih luas, int64
     var
         temp : Int64;
     begin
@@ -62,7 +65,7 @@ function StringToInt64(str: String): int64;
       StringToInt64 := temp;
     end;
   
-function IntToString(angka: Integer): string;
+function IntToString(angka: Integer): string; // Mengubah integer ke string 
   var
     temp : string;
   begin
@@ -70,7 +73,7 @@ function IntToString(angka: Integer): string;
     IntToString := temp;
   end;
 
-function Int64ToString(angka: Int64): string;
+function Int64ToString(angka: Int64): string; // Mengubah int64 ke string
   var
     temp : string;
   begin
@@ -78,7 +81,7 @@ function Int64ToString(angka: Int64): string;
     Int64ToString := temp;
   end;
 
-function StringToTanggal(str: String): tanggal;
+function StringToTanggal(str: String): tanggal; // Mengubah string ke tipe tanggal
   var
     temp: tanggal;
     tempstr: string;
@@ -103,7 +106,7 @@ function StringToTanggal(str: String): tanggal;
     StringToTanggal := temp;
   end;
 
-function TanggalToString(date: tanggal): string;
+function TanggalToString(date: tanggal): string; // Mengubah tipe tanggal ke string 
   var
     ret, tempstr: string;
     i: integer;
@@ -129,12 +132,12 @@ function TanggalToString(date: tanggal): string;
     TanggalToString := ret;
   end;
 
-function CekKabisat(tahun: integer): boolean;
+function CekKabisat(tahun: integer): boolean; // Memerika apakah tahun merupakan tahun kabisat
   begin
     CekKabisat := ((tahun mod 4=0) and (tahun mod 100<>0)) or (tahun mod 400=0);
   end;
 
-function TambahDenda(tgl: string): string;
+function TambahDenda(tgl: string): string; // Menambahkan seminggu ke tanggal
   var
     hariUtkBulan: array [1..12] of integer = (31,28,31,30,31,30,31,31,30,31,30,31);
     cur, ret: tanggal;
@@ -153,7 +156,7 @@ function TambahDenda(tgl: string): string;
     TambahDenda := TanggalToString(ret);
   end;
 
-function HitungKabisat(tgl: tanggal): integer;
+function HitungKabisat(tgl: tanggal): integer; // Menghitung berapa banyak tahun kabisat dari sebuah tahun 0 ke tahun sekarang
   var
     thn: integer;
   begin
@@ -162,7 +165,7 @@ function HitungKabisat(tgl: tanggal): integer;
     HitungKabisat := (thn div 4) - (thn div 100) + (thn div 400);
   end;
 
-function BedaHari(awal, akhir: String): Int64;
+function BedaHari(awal, akhir: String): Int64; // Menghitung beda hari
   var
     hariUtkBulan: array [1..12] of integer = (31,28,31,30,31,30,31,31,30,31,30,31);
     tmp1, tmp2: tanggal;
@@ -189,17 +192,7 @@ function BedaHari(awal, akhir: String): Int64;
     BedaHari := day2-day1;
   end;
 
-function StringToBool(str: String): boolean;
-  begin
-    if(str='True') then StringToBool := True else StringToBool := False;
-  end;  
-function BoolToString(bol: Boolean): string;
-  begin
-    if(bol=True) then BoolToString := 'True' else BoolToString := 'False';
-  end;  
-
-// function cari buku berdasarkan ID , function mengembalikan indeksnya
-function findID(tabel : tabel_buku; id: string): integer;
+function findID(tabel : tabel_buku; id: string): integer; // Mencari ID buku di data buku
 	var
 		i : integer;
     found: boolean = false;
@@ -234,6 +227,7 @@ function findID2(tabel : tabel_peminjaman; id: string): integer;
 	end;
 
 function tutupinInput : string;
+function tutupinInput : string; // Fungsi untuk menutup password agar terlihat di layar
     var
     inp : Char;
     temp : string;
@@ -267,13 +261,13 @@ function tutupinInput : string;
       tutupinInput := temp;
     end;
 
-procedure clrscr1();
+procedure clrscr1(); // Membersihkan layar
     begin
       clrscr();
       printOwl();
     end;
 
-procedure end_of_submenu(var inp : Char);
+procedure end_of_submenu(var inp : Char); // Mencetak akhir submenu
     begin
     writeln;
     writeln('Press Any Key to Proceed');
@@ -281,7 +275,7 @@ procedure end_of_submenu(var inp : Char);
     clrscr1();
     end;
   
-procedure load_menu_admin();
+procedure load_menu_admin(); // Mencetak menu untuk admin
 	begin
 	writeln('Menu: ');
 	writeln('1. register : registrasi akun');
@@ -298,7 +292,7 @@ procedure load_menu_admin();
 	writeln('Masukkan pilihan Anda: ');
 	end;
 
-procedure load_menu_pengunjung();
+procedure load_menu_pengunjung(); // Mencetak menu untuk pengunjung
 	begin
 	writeln('Menu: ');
 	writeln('1. cari : mencari buku berdasarkan kategori');

@@ -116,14 +116,15 @@ function konversi_csv(data_tempuser: tabel_user): arr_str;
 procedure print(data_tempuser: tabel_user);
     { DESKRIPSI : Prosedur sederhana yang digunakan pada proses pembuatan program untuk debugging, prosedur ini mencetak data ke layar }
     { PARAMETER : Data yang akan dicetak }
+
+    { KAMUS LOKAL }
     var
      i: integer;
+    { ALGORITMA }
     begin
         for i:=0 to data_tempuser.sz-1 do
         begin
             writeln(data_tempuser.t[i].Nama, ' | ', data_tempuser.t[i].Alamat, ' | ', data_tempuser.t[i].Username, ' | ', data_tempuser.t[i].Password, ' | ', data_tempuser.t[i].Role);
         end;
     end;
-
-  
 end.

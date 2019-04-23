@@ -3,8 +3,11 @@ unit kehilangan_handler;
 interface
 uses
     tipe_data;
+{ KONSTANTA }
 const
-    nmax = 1000;
+    nmax = 1000; // Asumsi bahwa size terbesar dari database adalah 1000
+
+{ DEKLARASI TIPE }
 type
     kehilangan = record
             Username, ID_Buku, Tanggal_Laporan: string;
@@ -14,15 +17,18 @@ type
                sz: integer; // effective size
             end;
 
-
+{ DEKLARASI FUNGSI DAN PROSEDUR }
 function tambah(s: arr_str): tabel_kehilangan;
 procedure output(data_tempkehilangan: tabel_kehilangan);
 function konversi_csv(data_tempkehilangan: tabel_kehilangan): arr_str;
 
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
 function tambah(s: arr_str): tabel_kehilangan;
-{ fungsi tambah adalah suatu fungsi yang menerima inputan berupa s -- array of string yang berisikan kumpulan string yang merupakan hasil convert dari text pada csv--
- dan mengubahnya menjadi array yang berupa data terpisah -- username, _Hilang,author,tanggal peminjaman, tanggal batas pengembalian dan status pengembalian-- masing masing user.}
+    { DESKRIPSI : Memasukkan data dari array of string kedalam tabel_kehilangan }
+    { PARAMETER : array of string }
+    { RETURN    : data kehilangan }
+
     var
       col, row: integer; // col = data ke-N, row = baris ke-N dari file csv
       temp: string; // string temporer, berfungsi 
@@ -51,11 +57,15 @@ function tambah(s: arr_str): tabel_kehilangan;
         data_tempkehilangan.t[data_tempkehilangan.sz].Tanggal_Laporan := temp;
         data_tempkehilangan.sz := data_tempkehilangan.sz+1;        
       end;
-    //   output(data_tempkehilangan);
       tambah := data_tempkehilangan;
     end;
 
 function konversi_csv(data_tempkehilangan: tabel_kehilangan): arr_str;
+    { DESKRIPSI : Fungsi untuk mengubah data kehilangan menjadi array of string }
+    { PARAMETER : data kehilangan }
+    { RETURN    : array of string }
+
+    { KAMUS LOKAL }
     var
         i : integer;
         ret : arr_str;
@@ -70,9 +80,14 @@ function konversi_csv(data_tempkehilangan: tabel_kehilangan): arr_str;
         konversi_csv := ret;
     end;
 
-procedure output(data_tempkehilangan: tabel_kehilangan); // for debugging
+procedure output(data_tempkehilangan: tabel_kehilangan);
+    { DESKRIPSI : Prosedur sederhana yang digunakan pada proses pembuatan program untuk debugging, prosedur ini mencetak data ke layar }
+    { PARAMETER : Data yang akan dicetak }
+
+    { KAMUS LOKAL }
     var
      i: integer;
+    { ALGORITMA }
     begin
         for i:=0 to data_tempkehilangan.sz-1 do
         begin
@@ -80,6 +95,4 @@ procedure output(data_tempkehilangan: tabel_kehilangan); // for debugging
         end;
     end;
 
-  
 end.
-// sample

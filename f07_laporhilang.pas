@@ -14,7 +14,7 @@ procedure lapor(var data_kehilangan: tabel_kehilangan; data_peminjaman : tabel_p
 implementation
 procedure lapor(var data_kehilangan: tabel_kehilangan; data_peminjaman : tabel_peminjaman; var data_buku: tabel_buku; username: String);
     { DESKRIPSI	: prosedur untuk melaporkan kehilangan buku }
-	{ PARAMETER	: data kehilangan dan username pelapor }
+	{ PARAMETER	: data kehilangan, data buku, dan username pelapor }
 
     { KAMUS LOKAL }
     var

@@ -5,9 +5,16 @@ uses
     user_handler,
     buku_handler;
 
+{ DEKLARASI FUNGSI DAN PROSEDUR }
 procedure getStatistik(data_user: tabel_user; data_buku: tabel_buku);
+
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
 procedure getStatistik(data_user: tabel_user; data_buku: tabel_buku);
+    { DESKRIPSI : Mencetak statistik dari data yang ada }
+    { PARAMETER : data user dan data buku }
+
+    { KAMUS LOKAL }
     var
         cnt_admin,
         cnt_pengunjung,
@@ -19,6 +26,7 @@ procedure getStatistik(data_user: tabel_user; data_buku: tabel_buku);
         cnt_sejarah,
         cnt_programming,
         total_buku: integer;
+    { ALGORITMA }
     begin
       cnt_admin := 0;
       cnt_pengunjung := 0;
@@ -28,7 +36,7 @@ procedure getStatistik(data_user: tabel_user; data_buku: tabel_buku);
         if(data_user.t[i].Role='Admin') then cnt_admin := cnt_admin+1 else cnt_pengunjung := cnt_pengunjung+1;
       end;
       total_user := cnt_admin + cnt_pengunjung;
-
+      
       cnt_sastra := 0;
       cnt_sains := 0;
       cnt_manga := 0;

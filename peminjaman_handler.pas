@@ -3,8 +3,12 @@ unit peminjaman_handler;
 interface
 uses
     tipe_data;
+
+{ KONSTANTA }
 const
-    nmax = 1000;
+    nmax = 1000; // Asumsi bahwa size terbesar dari database adalah 1000
+
+{ DEKLARASI TIPE }
 type
     peminjaman = record
             Username, ID_Buku, Tanggal_Peminjaman, Tanggal_Batas_Pengembalian, Status_Pengembalian : string;
@@ -14,20 +18,25 @@ type
                sz: integer; // effective size
             end;
 
-
+{ DEKLARASI FUNGSI DAN PROSEDUR }
 function tambah(s: arr_str): tabel_peminjaman;
 procedure tulis(data_temppeminjaman: tabel_peminjaman);
 function konversi_csv(data_temppeminjaman: tabel_peminjaman): arr_str;
 
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
 function tambah(s: arr_str): tabel_peminjaman;
-{ fungsi tambah adalah suatu fungsi yang menerima inputan berupa s -- array of string yang berisikan kumpulan string yang merupakan hasil convert dari text pada csv--
- dan mengubahnya menjadi array yang berupa data terpisah -- username, id_buku,author,tanggal peminjaman, tanggal batas pengembalian dan status pengembalian-- masing masing user.}
+    { DESKRIPSI : Memasukkan data dari array of string kedalam tabel_peminjaman }
+    { PARAMETER : array of string }
+    { RETURN    : data peminjaman }
+
+    { KAMUS LOKAL }    
     var
       col, row: integer; // col = data ke-N, row = baris ke-N dari file csv
       temp: string; // string temporer, berfungsi 
       c: char;
       data_temppeminjaman : tabel_peminjaman;
+    { ALGORITMA }
     begin
       data_temppeminjaman.sz := 0;      
       for row:=0 to s.sz-1 do
@@ -54,14 +63,19 @@ function tambah(s: arr_str): tabel_peminjaman;
         data_temppeminjaman.t[data_temppeminjaman.sz].Status_Pengembalian := temp;
         data_temppeminjaman.sz := data_temppeminjaman.sz+1;        
       end;
-    //   tulis(data_temppeminjaman);
       tambah := data_temppeminjaman;
     end;
 
 function konversi_csv(data_temppeminjaman: tabel_peminjaman): arr_str;
+    { DESKRIPSI : Fungsi untuk mengubah data peminjaman menjadi array of string }
+    { PARAMETER : data peminjaman }
+    { RETURN    : array of string }
+
+    { KAMUS LOKAL }
     var
         i : integer;
         ret : arr_str;
+    { ALGORITMA }
     begin
         ret.sz := data_temppeminjaman.sz;
         for i:=0 to data_temppeminjaman.sz do
@@ -75,9 +89,14 @@ function konversi_csv(data_temppeminjaman: tabel_peminjaman): arr_str;
         konversi_csv := ret;
     end;
 
-procedure tulis(data_temppeminjaman: tabel_peminjaman); // for debugging
+procedure tulis(data_temppeminjaman: tabel_peminjaman);
+    { DESKRIPSI : Prosedur sederhana yang digunakan pada proses pembuatan program untuk debugging, prosedur ini mencetak data ke layar }
+    { PARAMETER : Data yang akan dicetak }
+
+    { KAMUS LOKAL }
     var
      i: integer;
+    { ALGORITMA }
     begin
         for i:=0 to data_temppeminjaman.sz-1 do
         begin
@@ -85,4 +104,3 @@ procedure tulis(data_temppeminjaman: tabel_peminjaman); // for debugging
         end;
     end;
 end.
-// sample

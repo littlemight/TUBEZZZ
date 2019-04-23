@@ -97,13 +97,16 @@ function konversi_csv(data_tempbuku: tabel_buku): arr_str;
 procedure cetak(data_tempbuku: tabel_buku); // for debugging
     { DESKRIPSI : Prosedur sederhana yang digunakan pada proses pembuatan program untuk debugging, prosedur ini mencetak data ke layar }
     { PARAMETER : Data yang akan dicetak }
+
+    { KAMUS LOKAL }
     var
      i: integer;
+    { ALGORITMA }
     begin
         for i:=0 to data_tempbuku.sz-1 do
         begin
             writeln(data_tempbuku.t[i].ID_Buku, ' | ', data_tempbuku.t[i].Judul_Buku, ' | ', data_tempbuku.t[i].Author, ' | ', data_tempbuku.t[i].Jumlah_Buku, ' | ', data_tempbuku.t[i].Tahun_Penerbit, ' | ', data_tempbuku.t[i].Kategori);
         end;
     end;
-    
+
 end.

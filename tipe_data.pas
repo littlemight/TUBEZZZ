@@ -1,8 +1,11 @@
 unit tipe_data;
 
 interface
+{ KONSTANTA }
 const
-    nmax = 1000;
+    nmax = 1000; // Asumsi size terbesar adalah 1000
+
+{ DEKLARASI TIPE }
 type
   arr_str = record
                 st : array [0..nmax] of string;
@@ -13,5 +16,4 @@ type
             end;
 
 implementation
-
 end.
