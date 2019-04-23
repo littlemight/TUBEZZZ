@@ -10,14 +10,20 @@ uses
     kehilangan_handler,
     tipe_data;
 
+{ DEKLARASI FUNGSI DAN PROSEDUR }
 procedure load(var data_buku: tabel_buku; var data_user: tabel_user; var data_peminjaman: tabel_peminjaman; var data_pengembalian: tabel_pengembalian; var data_kehilangan: tabel_kehilangan);
 
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
-
 procedure load(var data_buku: tabel_buku; var data_user: tabel_user; var data_peminjaman: tabel_peminjaman; var data_pengembalian: tabel_pengembalian; var data_kehilangan: tabel_kehilangan);
+    { DESKRIPSI : Memasukkan data dari .csv ke data di dalam program }
+    { PARAMETER : semua tabel data }
+
+    { KAMUS LOKAL }
     var
         temp : arr_str;
         filename : string;
+    { ALGORITMA }
     begin
         write('Masukkan nama File Buku: '); readln(filename);
             temp := baca_csv(filename);

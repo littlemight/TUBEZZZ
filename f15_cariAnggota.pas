@@ -4,20 +4,27 @@ interface
 uses 
     utilitas, f02_Login,
     user_handler;
-
+{ KAMUS }
 var
     inp : string;
 
-function cek(var data_user : tabel_user; inp : string) : User;
-procedure cetak(var data : user);
+{ DEKLARASI FUNGSI DAN PROSEDUR }
+function cek(data_user : tabel_user; inp : string) : User;
+procedure cetak(data : user);
 procedure lihatUser(data_user : tabel_user);
 
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
-
-function cek(var data_user : tabel_user; inp : string) : User; // oke
+function cek(data_user : tabel_user; inp : string) : User;
+    { DESKRIPSI : Mencari user di tabel user }
+    { PARAMETER : tabel user }
+    { RETURN    : data user yang valid jika benar, dan header array jika salah }
+    
+    { KAMUS LOKAL }
     var
         i : integer;
         found: boolean = false;
+    { ALGORITMA }
     begin
         i := 1;
         while (i < data_user.sz) and (found <> true) do
@@ -31,16 +38,23 @@ function cek(var data_user : tabel_user; inp : string) : User; // oke
         if(found = false) then cek := data_user.t[0]; 
     end;
 	
-procedure cetak(var data : user);
+procedure cetak(data : user);
+    { DESKRIPSI : Mencetak nama dan alamat user }
+    { PARAMETER : data user }
     begin
-            writeln('Nama Anggota: ', data.Nama);
-            writeln('Alamat anggota: ',data.Alamat);
+        writeln('Nama Anggota: ', data.Nama);
+        writeln('Alamat anggota: ',data.Alamat);
     end;
 
 procedure lihatUser(data_user : tabel_user);
+    { DESKRIPSI : Melihat user di tabel user }
+    { PARAMETER : tabel user }
+
+    { KAMUS LOKAL }
     var
         inp : string;
         who_user : user;
+    { ALGORITMA }
     begin
         write('Masukkan username: ');
         readln(inp);
