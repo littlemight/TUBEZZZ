@@ -47,7 +47,7 @@ var
 
 { ALGORITMA }
 begin
-    // welcome();
+    welcome();
 	{ LOAD DATA KE ARRAY }
     writeln('Load file by writing "load"'); 
     write('$ '); 
@@ -60,7 +60,7 @@ begin
 	load(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);
 	end_of_submenu(c);
 	clrscr();
-	// loading();
+	loading();
     end_of_submenu(c);
     
     { LOGIN PENGGUNA ATAU EXIT PROGRAM }
