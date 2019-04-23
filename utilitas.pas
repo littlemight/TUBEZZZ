@@ -226,7 +226,6 @@ function findID2(tabel : tabel_peminjaman; id: string): integer;
     if(found = False) then findID2 := -1;
 	end;
 
-function tutupinInput : string;
 function tutupinInput : string; // Fungsi untuk menutup password agar terlihat di layar
     var
     inp : Char;
