@@ -59,25 +59,28 @@ procedure kembalikan_buku(who_login : user; var data_peminjaman : tabel_peminjam
             write('Masukkan Tanggal Hari ini: '); Readln(todayTanggal);
             
             if(BedaHari(buku_pinjam.Tanggal_Peminjaman, todayTanggal) < 0) then writeln('Tanggal yang dimasukkan sebelum tanggal peminjaman.') // Jika pengguna memasukkan tanggal sebelum tanggal peminjaman
-            else denda(buku_pinjam.Tanggal_Batas_Pengembalian, todayTanggal);
+            else
+            begin
+                denda(buku_pinjam.Tanggal_Batas_Pengembalian, todayTanggal);
 
-            for i := 1 to (data_peminjaman.sz - 1) do
-            begin
-                if ID_Buku = data_peminjaman.t[i].ID_Buku then
-                data_peminjaman.t[i].Status_Pengembalian := 'True';
-            end;
-            for i := 1 to (data_buku.sz - 1) do
-            begin
-                if ID_Buku = data_buku.t[i].ID_Buku then
+                for i := 1 to (data_peminjaman.sz - 1) do
                 begin
-                    amount_buku := (StringToInt(data_buku.t[i].Jumlah_Buku) + 1) ;
-                    data_buku.t[i].Jumlah_Buku := IntToString(amount_buku);
+                    if ID_Buku = data_peminjaman.t[i].ID_Buku then
+                    data_peminjaman.t[i].Status_Pengembalian := 'True';
                 end;
+                for i := 1 to (data_buku.sz - 1) do
+                begin
+                    if ID_Buku = data_buku.t[i].ID_Buku then
+                    begin
+                        amount_buku := (StringToInt(data_buku.t[i].Jumlah_Buku) + 1) ;
+                        data_buku.t[i].Jumlah_Buku := IntToString(amount_buku);
+                    end;
+                end;
+                data_pengembalian.sz := data_pengembalian.sz + 1;
+                data_pengembalian.t[data_pengembalian.sz-1].Username := buku_pinjam.Username;
+                data_pengembalian.t[data_pengembalian.sz-1].ID_buku := buku_pinjam.ID_Buku;
+                data_pengembalian.t[data_pengembalian.sz-1].Tanggal_Pengembalian := todayTanggal;
             end;
-            data_pengembalian.sz := data_pengembalian.sz + 1;
-            data_pengembalian.t[data_pengembalian.sz-1].Username := buku_pinjam.Username;
-            data_pengembalian.t[data_pengembalian.sz-1].ID_buku := buku_pinjam.ID_Buku;
-            data_pengembalian.t[data_pengembalian.sz-1].Tanggal_Pengembalian := todayTanggal;
         end;
       end;
 	end;
