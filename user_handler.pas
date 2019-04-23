@@ -3,8 +3,12 @@ unit user_handler;
 interface
 uses
     tipe_data;
+
+{ KONSTANTA }
 const
-    nmax = 1000;
+    nmax = 1000; // Asumsi bahwa size terbesar dari database adalah 1000
+
+{ DEKLARASI TIPE }
 type
     user = record
             Nama, Alamat, Username, Password, Role : string;
@@ -14,20 +18,26 @@ type
                sz: integer; // effective size
             end;
 
-
+{ DEKLARASI FUNGSI DAN PROSEDUR }
 function tambah(s: arr_str): tabel_user;
 procedure print(data_tempuser: tabel_user);
 function konversi_csv(data_tempuser: tabel_user): arr_str;
 
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
 function tambah(s: arr_str): tabel_user;
+    { DESKRIPSI : Memasukkan data dari array of string kedalam tabel_user }
+    { PARAMETER : array of string }
+    { RETURN    : data user }
+
+    { KAMUS LOKAL }
     var
       row: integer;
       temp: string;
       c: char;
       data_tempuser : tabel_user;
       countcomma, amountcomma : integer;
-
+    { ALGORITMA }
     begin
       data_tempuser.sz := 0;      
       for row:=0 to s.sz-1 do
@@ -77,14 +87,19 @@ function tambah(s: arr_str): tabel_user;
         data_tempuser.t[data_tempuser.sz].Role := temp;
         data_tempuser.sz := data_tempuser.sz+1;        
       end;
-    //   print(data_tempuser);
       tambah := data_tempuser;
     end;
 
 function konversi_csv(data_tempuser: tabel_user): arr_str;
+    { DESKRIPSI : Fungsi untuk mengubah data user menjadi array of string }
+    { PARAMETER : data user }
+    { RETURN    : array of string }
+
+    { KAMUS LOKAL }
     var
         i : integer;
         ret : arr_str;
+    { ALGORITMA }
     begin
         ret.sz := data_tempuser.sz;
         for i:=0 to data_tempuser.sz do
@@ -98,7 +113,9 @@ function konversi_csv(data_tempuser: tabel_user): arr_str;
         konversi_csv := ret;
     end;
 
-procedure print(data_tempuser: tabel_user); // for debugging
+procedure print(data_tempuser: tabel_user);
+    { DESKRIPSI : Prosedur sederhana yang digunakan pada proses pembuatan program untuk debugging, prosedur ini mencetak data ke layar }
+    { PARAMETER : Data yang akan dicetak }
     var
      i: integer;
     begin
