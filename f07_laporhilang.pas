@@ -31,12 +31,13 @@ procedure lapor(var data_kehilangan: tabel_kehilangan; data_peminjaman : tabel_p
         write('Masukkan judul buku: '); readln(judul);
         write('Masukkan tanggal pelaporan: '); readln(temp.tanggal_laporan);
         writeln('');
-
-        data_kehilangan.sz := data_kehilangan.sz+1;
-        data_kehilangan.t[data_kehilangan.sz-1] := temp;
         if (data_buku.t[i].Jumlah_Buku = '0') then writeln('Stok buku sudah habis sejak awal') else
-        if ((findID2(data_peminjaman, temp.ID_Buku) = -1) or (data_peminjaman.t[findID2(data_peminjaman, temp.ID_Buku)].Status_Pengembalian = 'False')) then begin data_buku.t[i].Jumlah_Buku := IntToString(StringToInt(data_buku.t[i].Jumlah_Buku) - 1) end;
-        writeln('Laporan berhasil diterima.');
+        begin
+          data_kehilangan.sz := data_kehilangan.sz+1;
+          data_kehilangan.t[data_kehilangan.sz-1] := temp;
+          if ((findID2(data_peminjaman, temp.ID_Buku) = -1) or (data_peminjaman.t[findID2(data_peminjaman, temp.ID_Buku)].Status_Pengembalian = 'False')) then begin data_buku.t[i].Jumlah_Buku := IntToString(StringToInt(data_buku.t[i].Jumlah_Buku) - 1) end;
+          writeln('Laporan berhasil diterima.');
+        end;
       end;
     end;
 end.
