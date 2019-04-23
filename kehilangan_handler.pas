@@ -3,8 +3,11 @@ unit kehilangan_handler;
 interface
 uses
     tipe_data;
+{ KONSTANTA }
 const
-    nmax = 1000;
+    nmax = 1000; // Asumsi bahwa size terbesar dari database adalah 1000
+
+{ DEKLARASI TIPE }
 type
     kehilangan = record
             Username, ID_Buku, Tanggal_Laporan: string;
@@ -14,11 +17,12 @@ type
                sz: integer; // effective size
             end;
 
-
+{ DEKLARASI FUNGSI DAN PROSEDUR }
 function tambah(s: arr_str): tabel_kehilangan;
 procedure output(data_tempkehilangan: tabel_kehilangan);
 function konversi_csv(data_tempkehilangan: tabel_kehilangan): arr_str;
 
+{ IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
 function tambah(s: arr_str): tabel_kehilangan;
     { DESKRIPSI : Memasukkan data dari array of string kedalam tabel_kehilangan }
@@ -91,5 +95,4 @@ procedure output(data_tempkehilangan: tabel_kehilangan);
         end;
     end;
 
-  
 end.
