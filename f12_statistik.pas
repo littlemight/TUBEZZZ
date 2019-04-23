@@ -12,7 +12,7 @@ procedure getStatistik(data_user: tabel_user; data_buku: tabel_buku);
 implementation
 procedure getStatistik(data_user: tabel_user; data_buku: tabel_buku);
     { DESKRIPSI : Mencetak statistik dari data yang ada }
-    { PARAMETER : data user dan data buku}
+    { PARAMETER : data user dan data buku }
 
     { KAMUS LOKAL }
     var
