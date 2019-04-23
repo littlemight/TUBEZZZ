@@ -132,7 +132,7 @@ begin
                                 'save'               :  save(data_buku, data_user, data_peminjaman, data_pengembalian, data_kehilangan);                             
                                 'caritahunterbit'    :  cari_tahun(data_buku); 
                                 'pinjam_buku'        :  pinjam(data_peminjaman,data_buku,who_login.username);              
-                                'lapor_hilang'       :  lapor(data_kehilangan, data_buku, who_login.Username); 
+                                'lapor_hilang'       :  lapor(data_kehilangan, data_peminjaman, data_buku, who_login.Username); 
                                 'kembalikan_buku'    :  kembalikan_buku(who_login,data_peminjaman,data_buku,data_pengembalian);
                                 else writeln('Masukan ', inp, ' tidak valid!');
                         end;

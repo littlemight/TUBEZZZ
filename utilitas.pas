@@ -5,6 +5,7 @@ uses
   crt,
   intro,
   buku_handler,
+  peminjaman_handler,
   tipe_data;
 
 const
@@ -26,6 +27,7 @@ function BedaHari(awal, akhir: String): Int64;
 
 // General Search Utility
 function findID(tabel : tabel_buku; id: string): integer;
+function findID2(tabel : tabel_peminjaman; id: string): integer;
 
 // Password Masking Utility
 function tutupinInput : string;
@@ -212,6 +214,23 @@ function findID(tabel : tabel_buku; id: string): integer;
       end else i := i+1;
 		end;
     if(found = False) then findID := -1;
+	end;
+
+function findID2(tabel : tabel_peminjaman; id: string): integer;
+	var
+		i : integer;
+    found: boolean = false;
+	begin
+    i := 1;
+		while((i < tabel.sz) and (found <> true)) do
+		begin
+			if (tabel.t[i].ID_Buku=id) then
+      begin
+        findID2 := i;
+        found := true;
+      end else i := i+1;
+		end;
+    if(found = False) then findID2 := -1;
 	end;
 
 function tutupinInput : string;
