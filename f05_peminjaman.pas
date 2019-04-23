@@ -11,7 +11,7 @@ uses
 
 { DEKLARASI FUNGSI DAN PROSEDUR }
 procedure simpan_ke_array(temp: peminjaman; var data_peminjaman: tabel_peminjaman);
-procedure pinjam(var data_peminjaman: tabel_peminjaman; data_buku: tabel_buku; username: string);
+procedure pinjam(var data_peminjaman: tabel_peminjaman; var data_buku: tabel_buku; username: string);
 
 { IMPLEMENTASI FUNGSI DAN PROSEDUR }
 implementation
@@ -24,7 +24,7 @@ procedure simpan_ke_array(temp: peminjaman; var data_peminjaman: tabel_peminjama
 		data_peminjaman.sz := data_peminjaman.sz+1;
 	end;
 
-procedure pinjam(var data_peminjaman: tabel_peminjaman; data_buku: tabel_buku; username: string);
+procedure pinjam(var data_peminjaman: tabel_peminjaman; var data_buku: tabel_buku; username: string);
     { DESKRIPSI	: prosedur untuk meminjam buku }
 	{ PARAMETER	: data_peminjaman bertipe tabel_peminjaman, data_buku bertipe tabel_peminjaman, dan username bertipe string }
 
@@ -37,16 +37,18 @@ procedure pinjam(var data_peminjaman: tabel_peminjaman; data_buku: tabel_buku; u
 	begin
 	    write('Masukkan id buku yang ingin dipinjam: ');
 		readln(id);
-		write('Masukkan tanggal hari ini: ');
-		readln(tanggal);
 
 		i := findID(data_buku, id);
-		if(i <> -1) then // Jika buku tersebut ada di data perpustakaan
+		{ VALIDASI OPSIONAL }
+		if(i <> -1) then // Jika buku tersebut tidak ada di perpustakaan
 		begin
+			write('Masukkan tanggal hari ini: ');
+			readln(tanggal);
+
 			if (StringToInt(data_buku.t[i].Jumlah_Buku) > 0) then
 				begin
 					peminjaman_temp.Username := username; 
-					peminjaman_temp.ID_Buku := id; // asumsikan valid
+					peminjaman_temp.ID_Buku := id;
 					peminjaman_temp.Tanggal_Peminjaman := tanggal;
 					peminjaman_temp.Tanggal_Batas_Pengembalian := TambahDenda(tanggal);
 					peminjaman_temp.Status_Pengembalian := 'False';
@@ -54,7 +56,7 @@ procedure pinjam(var data_peminjaman: tabel_peminjaman; data_buku: tabel_buku; u
 					writeln('Tersisa ', StringToInt(data_buku.t[i].Jumlah_Buku)-1 ,' buku ',data_buku.t[i].Judul_Buku);
 					writeln('Terima kasih sudah meminjam');
 
-					//update jumlah pada buku.csv -1
+					//update jumlah pada array buku
 					data_buku.t[i].Jumlah_Buku := IntToString(StringToInt(data_buku.t[i].Jumlah_Buku)-1);
 					simpan_ke_array(peminjaman_temp, data_peminjaman);
 			

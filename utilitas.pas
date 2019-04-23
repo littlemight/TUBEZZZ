@@ -22,11 +22,7 @@ function StringToTanggal(str: String): tanggal;
 function CekKabisat(tahun: integer): boolean;
 function TambahDenda(tgl: string): string;
 function HitungKabisat(tgl: tanggal): integer;
-function BedaHari(awal, akhir: String): integer;
-
-// General boolean utility
-function StringToBool(str: String): boolean;
-function BoolToString(bol: Boolean): string;
+function BedaHari(awal, akhir: String): Int64;
 
 // General Search Utility
 function findID(tabel : tabel_buku; id: string): integer;
@@ -164,7 +160,7 @@ function HitungKabisat(tgl: tanggal): integer;
     HitungKabisat := (thn div 4) - (thn div 100) + (thn div 400);
   end;
 
-function BedaHari(awal, akhir: String): integer;
+function BedaHari(awal, akhir: String): Int64;
   var
     hariUtkBulan: array [1..12] of integer = (31,28,31,30,31,30,31,31,30,31,30,31);
     tmp1, tmp2: tanggal;
@@ -179,7 +175,6 @@ function BedaHari(awal, akhir: String): integer;
     begin
       day1 := day1 + hariUtkBulan[i];
     end;
-
     day1 := day1 + HitungKabisat(tmp1);
 
     day2 := tmp2.tahun*365 + tmp2.hari;
@@ -187,7 +182,6 @@ function BedaHari(awal, akhir: String): integer;
     begin
       day2 := day2 + hariUtkBulan[i];
     end;
-
     day2 := day2 + HitungKabisat(tmp2);
 
     BedaHari := day2-day1;
@@ -220,20 +214,6 @@ function findID(tabel : tabel_buku; id: string): integer;
     if(found = False) then findID := -1;
 	end;
 
-// function findID(tabel : tabel_buku; id: string): integer;
-// 	var
-// 		i : integer;
-// 	begin
-// 		for i := 1 to tabel.sz do
-// 		begin
-// 			if (tabel.t[i].ID_Buku=id) then
-// 				begin
-// 					findID := i;
-// 				end;
-// 		end;
-//     writeln('h ',findID);
-	// end;
-  
 function tutupinInput : string;
     var
     inp : Char;
